@@ -1,3 +1,16 @@
+<?php
+
+    // session_start();
+
+    // $_SESSION["Sucesso_Login"] = null;
+    // $logado = "Login";
+
+    // if(($_SESSION["Sucesso_Login"] == "Logado com Sucesso!!") || ($_GET["msgSucesso"])) {
+    //     $logado = $_SESSION["nome"];
+    // }
+
+?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
