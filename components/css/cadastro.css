@@ -1,0 +1,166 @@
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	font-family: Arial, Helvetica, sans-serif;
+}
+
+::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #8300E6;
+    border-radius: 7px;
+}
+
+body {
+	color: #999;
+	background-color: #8300E6;
+}
+
+html {
+	font-size: 62.5%;
+}
+
+.container {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.campos {
+	width: 100%;
+}
+
+.logo-search-hotel {
+	width: 180px;
+    height: 80px;
+    object-fit: cover;
+    object-position: 0 -55px;
+}
+
+.form_cadastro .voltar {
+	position: relative;
+	left: -50%;
+
+	color: #000;
+	font-size: 25px;
+	cursor: pointer;
+}
+
+h1 {
+	font-size: 3rem;
+	margin-bottom: 2.5rem;
+	color: #8300E6;
+}
+
+.agrupamento_cadastro {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	align-items: center;
+
+	background: #FFF;
+	padding: 5rem;
+	border-radius: 8px;
+	box-shadow: 0 7px 15px rgba(0, 0, 0, .5);
+}
+
+fieldset {
+	padding: 15px;
+	border-radius: 15px;
+	margin-top: 15px;
+	border: 2px solid #8300E6;
+}
+
+legend {
+	font-size: 25px;
+	color: #000;
+	padding: 0 12px;
+}
+
+label {
+	color: #000;
+	font-weight: 400;
+	font-size: 24px;
+	line-height: 2px;
+}
+
+label,
+input[type="text"],
+input[type="password"],
+input[type="submit"],
+input[type="date"],
+input[type="email"] {
+	font-size: 1.5rem;
+}
+
+input[type="text"],
+input[type="password"],
+input[type="date"],
+input[type="email"] {
+	width: 500px;
+	padding: 1.0rem;
+	margin-top: 1.2rem;
+	margin-bottom: 1.2rem;
+	border: 1px solid #1E1E1E;
+	border-radius: 8px;
+}
+
+input[type="date"] {
+	width: 300px;
+}
+
+.div-cadastrar {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+input[type="submit"] {
+	color: #FFF;
+	font-weight: 600;
+	width: 325px;
+	padding: 1.0rem;
+	margin-top: 1.2rem;
+	border-radius: 8px;
+	background: #8300E6;
+	border: 2px solid transparent;
+	border-radius: 8px;
+	cursor: pointer;
+	transition: all .5s ease;
+}
+
+input[type="submit"]:hover {
+	background: #4e00cc;
+	color: #FFF;
+}
+
+.grupo-sexo {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	width: 200px;
+}
+
+.grupo-1 {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+
+.grupo-2 {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+
+.grupo-2 input {
+	width: 200px;
+}
