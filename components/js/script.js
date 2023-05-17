@@ -7,16 +7,12 @@ const menuUser = document.getElementById("modal-user");
 
 const room_hos = document.querySelector(".room-hos");
 
-function openLogin() {
-    const user = document.getElementById("user").value
-    if(user == undefined) {
-        console.log("asf")
+function openLogin(tag) {
+    if(tag.value == 0) {
         modal.style.display = "block"
         loginAdmin.style.display = "flex"
-        menuUser.style.display = "none"
         document.body.style.overflow = "hidden"
     } else {
-        console.log("fsadfasd")
         menuUser.style.display = "block"
     }
 }

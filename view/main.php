@@ -1,5 +1,15 @@
 <?php
 
+    if(!isset($_SESSION)){
+        session_start();
+    }
+
+    if($_SESSION["Cadastrado"] ?? null) {
+        $nome = $_SESSION["Cadastrado"];
+    } else {
+        $nome = "Login";
+    }
+
     // session_start();
 
     // $_SESSION["Sucesso_Login"] = null;
@@ -51,21 +61,19 @@
                                 Suporte
                             </a>
                         </li>
-                        <li id="Login" onclick="openLogin()">
-                            <a href="#" id="user" value="Login">
-                                <i class="bi bi-person-fill"></i>
-                                Login
-                                <div id="modal-user" class="modal-user">
-                                    <div class="container-user">
-                                        <div>
-                                            <a href="#">Perfil</a>
-                                        </div>
-                                        <div>
-                                            <a href="../controllers/logout.php">Sair</a>
-                                        </div>
+                        <li id="Login" value="<?php echo $nome; ?>" onclick="openLogin(this)">
+                            <i class="bi bi-person-fill"></i>
+                            <?php echo $nome; ?>
+                            <div id="modal-user" class="modal-user">
+                                <div class="container-user">
+                                    <div>
+                                        <a href="#">Perfil</a>
+                                    </div>
+                                    <div>
+                                        <a href="../auth/logout.php" class="sair">Sair</a>
                                     </div>
                                 </div>
-                            </a>
+                            </div>
                         </li>
                         <li id="Idioma">
                             <select name="idioma" id="idioma">
@@ -235,7 +243,7 @@
                 <div>
                     <h2>LOGIN</h2>
                 </div>
-                <form action="../controllers/valida_login.php" method="post">
+                <form action="../auth/valida_login.php" method="post">
                     <div>
                         <input type="text" class="email" name="email" id="email" placeholder="E-mail" required>
                     </div>
