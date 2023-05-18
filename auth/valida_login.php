@@ -14,10 +14,14 @@
     $login = UsuarioDAO::login($Usuario);
     
     
+    if(!isset($_SESSION)){
+        session_start();
+    }
     $nome = $login->getNome();
     $nome = explode(" ", $nome);
 
-    $_SESSION["Logado"] = $nome;
+
+    $_SESSION["Logado"] = $nome[0];
     header("location: ../view/main.php");
 
 
