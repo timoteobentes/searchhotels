@@ -12,7 +12,7 @@
 
 ## Desenvolvimento do projeto:
 Front-End => HTML5, CSS3, JAVASCRIPT    
-Back-End => PHP    
+Back-End => PHP *e um pouco de POO    
 Banco de Dados => MySQL    
 Servidor => Heroku    
 
