@@ -4,8 +4,11 @@
         session_start();
     }
 
-    if($_SESSION["Cadastrado"] ?? null) {
+    $nome;
+    if(isset($_SESSION["Cadastrado"])) {
         $nome = $_SESSION["Cadastrado"];
+    } elseif(isset($_SESSION["Logado"])) {
+        $nome = $_SESSION["Logado"];
     } else {
         $nome = "Login";
     }

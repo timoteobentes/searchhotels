@@ -9,11 +9,17 @@
     $Usuario = new Usuario();
 
     $Usuario->setEmail($email_login);
-    $Usuario->setSenha($email_login);
-
+    $Usuario->setSenha($senha_login);
+    
     $login = UsuarioDAO::login($Usuario);
+    
+    
+    $nome = $login->getNome();
+    $nome = explode(" ", $nome);
 
-    var_dump($login);
+    $_SESSION["Logado"] = $nome;
+    header("location: ../view/main.php");
+
 
 
 

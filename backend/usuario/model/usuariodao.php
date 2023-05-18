@@ -197,7 +197,7 @@
                 $row = $stmt->fetch(PDO::FETCH_OBJ);
                 $Usuario = new Usuario;
                 if (!empty($row)) {
-                    $Usuario->setId($row->Id);
+                    $Usuario->setId($row->id);
                     $Usuario->setNome($row->nome);
                     $Usuario->setPerfil($row->perfil);
                 }
