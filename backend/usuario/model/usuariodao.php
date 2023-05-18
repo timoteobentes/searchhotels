@@ -1,7 +1,21 @@
 <?php
 
-    require_once("../model/usuario.php");
-    require_once("../../../database/configDB.php");
+    require_once("usuario.php");
+
+    class connectDB {
+
+        static $active;
+        public static function active() {
+            static $host = "localhost";
+            static $user = "root";
+            static $senha = "Timoteo@24";
+            static $db_name = "searchhotels";
+
+            $active = new PDO("mysql:host=$host; port=3306; dbname=$db_name; charset=utf8", $user, $senha);
+            return $active;
+        }
+
+    }
 
     class UsuarioDAO {
 
