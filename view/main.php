@@ -229,7 +229,7 @@
                 </div>
                 <div class="bottom-f">
                     <div>
-                        <span>&copy;2O23 Timóteo Bentes | Todos os Direitos Reservados</span>
+                        <span class="txt-f"></span>
                     </div>
                 </div>
             </div>

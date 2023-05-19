@@ -22,7 +22,7 @@ html {
 }
 
 ::-webkit-scrollbar-thumb {
-    background: linear-gradient(to bottom, #8300E6, #00C4CC);
+    background: #8300E6;
     border-radius: 7px;
 }
 

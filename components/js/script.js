@@ -67,3 +67,8 @@ function setHospede(value) {
     hospedes = value;
     room_hos.value = `${quartos} quarto(s), ${hospedes} hóspedes`;
 }
+
+
+let date = new Date().getFullYear();
+date = String(date).replace("0", "O")
+document.querySelector(".txt-f").innerHTML = `&copy;${date} Timóteo Bentes | Todos os Direitos Reservados`;
