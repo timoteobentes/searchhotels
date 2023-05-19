@@ -1,7 +1,7 @@
 <?php
 
-    require_once("../backend/usuario/model/usuario.php");
-    require_once("../backend/usuario/model/usuariodao.php");
+    require_once("../../backend/usuario/model/usuario.php");
+    require_once("../../backend/usuario/model/usuariodao.php");
 
     $email_login = $_POST['email'];
     $senha_login = md5($_POST['senha']);
@@ -22,7 +22,7 @@
 
 
     $_SESSION["Logado"] = $nome[0];
-    header("location: ../view/main.php");
+    header("location: ../../view/main.php");
 
 
 

@@ -77,6 +77,55 @@ header .container-h {
     font-size: 14px;
 }
 
+.modal-user {
+    position: absolute;
+    top: 6rem;
+    width: 147px;
+    left: 140.5rem;
+    /* padding: 30px; */
+    background: #FFF;
+    border: 1px solid #4e00cc;
+    border-radius: 15px;
+    display: none;
+}
+
+.modal-user div {
+    text-align: center;
+}
+
+.modal-user div:last-child {
+    margin-bottom: 0px;
+}
+
+
+.modal-user div div {
+    padding: 15px;
+    border-radius: 15px;
+}
+
+.modal-user div div a {
+    font-size: 16px;
+    width: 70px;
+    border-radius: 5px;
+    border: none;
+    color: #444;
+    background: none;
+    letter-spacing: 2px;
+    text-align: center;
+    cursor: pointer;
+
+    transition: .5s ease;
+}
+
+.modal-user div div:hover {
+    background: #4e00cc !important;
+    color: #fff !important;
+}
+
+.modal-user div div:hover a {
+    color: #fff !important;
+}
+
 .nav ul li {
     letter-spacing: 2px;
 }

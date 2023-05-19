@@ -4,13 +4,14 @@
         session_start();
     }
 
-    $nome;
+    $nome = "Login";
+    $nomeValue = 0;
     if(isset($_SESSION["Cadastrado"])) {
         $nome = $_SESSION["Cadastrado"];
+        $nomeValue = 1;
     } elseif(isset($_SESSION["Logado"])) {
         $nome = $_SESSION["Logado"];
-    } else {
-        $nome = "Login";
+        $nomeValue = 1;
     }
 
     // session_start();
@@ -64,16 +65,16 @@
                                 Suporte
                             </a>
                         </li>
-                        <li id="Login" value="<?php echo $nome; ?>" onclick="openLogin(this)">
+                        <li id="Login" value="<?php echo $nomeValue; ?>" onclick="openLogin(this)">
                             <i class="bi bi-person-fill"></i>
                             <?php echo $nome; ?>
                             <div id="modal-user" class="modal-user">
                                 <div class="container-user">
-                                    <div>
+                                    <div onclick="openConstrucao()">
                                         <a href="#">Perfil</a>
                                     </div>
                                     <div>
-                                        <a href="../auth/logout.php" class="sair">Sair</a>
+                                        <a href="../auth/sair/logout.php" class="sair">Sair</a>
                                     </div>
                                 </div>
                             </div>
@@ -246,7 +247,7 @@
                 <div>
                     <h2>LOGIN</h2>
                 </div>
-                <form action="../auth/valida_login.php" method="post">
+                <form action="../auth/login/valida_login.php" method="post">
                     <div>
                         <input type="text" class="email" name="email" id="email" placeholder="E-mail" required>
                     </div>

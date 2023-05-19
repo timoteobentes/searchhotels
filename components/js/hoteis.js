@@ -2,11 +2,24 @@ const modalC = document.getElementById("modal-construcao");
 const modal = document.getElementById("modal-login");
 const modalRH = document.getElementById("modal-rp");
 
+const menuUser = document.getElementById("modal-user");
 const room_hos = document.querySelector(".room-hos");
 
-function openLogin() {
-    modal.style.display = "block"
-    document.body.style.overflow = "hidden"
+let toc = 0;
+function openLogin(tag) {
+    if(tag.value == "Login" || tag.value == 0) {
+        modal.style.display = "block"
+        loginAdmin.style.display = "flex"
+        document.body.style.overflow = "hidden"
+    } else {
+        toc += 1;
+        menuUser.style.display = "block";
+    }
+
+    if(toc == 2) {
+        menuUser.style.display = "none";
+        toc = 0;
+    }
 }
 
 function closeLogin(event) {

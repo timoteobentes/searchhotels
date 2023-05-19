@@ -1,5 +1,6 @@
 <?php
 
+    // require_once("../../../database/connection/configDB.php");
     require_once("usuario.php");
 
     class connectDB {

@@ -1,3 +1,30 @@
+<?php
+
+    if(!isset($_SESSION)){
+        session_start();
+    }
+
+    $nome = "Login";
+    $nomeValue = 0;
+    if(isset($_SESSION["Cadastrado"])) {
+        $nome = $_SESSION["Cadastrado"];
+        $nomeValue = 1;
+    } elseif(isset($_SESSION["Logado"])) {
+        $nome = $_SESSION["Logado"];
+        $nomeValue = 1;
+    }
+
+    // session_start();
+
+    // $_SESSION["Sucesso_Login"] = null;
+    // $logado = "Login";
+
+    // if(($_SESSION["Sucesso_Login"] == "Logado com Sucesso!!") || ($_GET["msgSucesso"])) {
+    //     $logado = $_SESSION["nome"];
+    // }
+
+?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -38,10 +65,20 @@
                                 Suporte
                             </a>
                         </li>
-                        <li id="Login" onclick="openLogin()">
+                        <li id="Login" value="<?php echo $nomeValue; ?>" onclick="openLogin(this)">
                             <a href="#">
                                 <i class="bi bi-person-fill"></i>
-                                Login
+                                <?php echo $nome; ?>
+                                <div id="modal-user" class="modal-user">
+                                    <div class="container-user">
+                                        <div onclick="openConstrucao()">
+                                            <a href="#">Perfil</a>
+                                        </div>
+                                        <div>
+                                            <a href="../auth/sair/logout.php" class="sair">Sair</a>
+                                        </div>
+                                    </div>
+                                </div>
                             </a>
                         </li>
                         <li id="Idioma">

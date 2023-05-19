@@ -6,16 +6,20 @@ const loginAdmin = document.getElementById("login-admin");
 const menuUser = document.getElementById("modal-user");
 const room_hos = document.querySelector(".room-hos");
 
+let toc = 0;
 function openLogin(tag) {
-    if(tag.value == "Login") {
+    if(tag.value == "Login" || tag.value == 0) {
         modal.style.display = "block"
         loginAdmin.style.display = "flex"
         document.body.style.overflow = "hidden"
     } else {
-        modal.style.display = "block"
-        loginAdmin.style.display = "flex"
-        document.body.style.overflow = "hidden"
-        
+        toc += 1;
+        menuUser.style.display = "block";
+    }
+
+    if(toc == 2) {
+        menuUser.style.display = "none";
+        toc = 0;
     }
 }
 
