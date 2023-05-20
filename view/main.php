@@ -114,11 +114,11 @@
                         <i class="bi bi-people"></i>
                         <div id="modal-rp" class="modal-rp">
                             <div>
-                                <input type="number" name="quartos" id="quartos" value="1" oninput="setQuarto(this.value)">
+                                <input type="number" name="quartos" id="quartos" value="1" min="1" oninput="setQuarto(this.value)">
                                 <label for="quartos">Quarto(s)</label>
                             </div>
                             <div>
-                                <input type="number" name="hospedes" id="hospedes" value="3" oninput="setHospede(this.value)">
+                                <input type="number" name="hospedes" id="hospedes" value="3" min="1" oninput="setHospede(this.value)">
                                 <label for="hospedes">Hóspede(s)</label>
                             </div>
                         </div>
@@ -190,17 +190,19 @@
                 <div class="title-n">
                     <h2>INSCREVA-SE PARA RECEBER OFERTAS EXCLUSIVAS!</h2>
                 </div>
-                <div class="campos-n">
-                    <div>
-                        <input type="text" class="nome" placeholder="Nome">
+                <form action="../backend/newsletter/controllers/adicionar.php" method="post">
+                    <div class="campos-n">
+                        <div>
+                            <input type="text" name="nome" id="nome" class="nome" placeholder="Nome">
+                        </div>
+                        <div>
+                            <input type="text" name="email" id="email" class="email" placeholder="E-mail">
+                        </div>
+                        <div>
+                            <input type="submit" class="eu_quero" value="EU QUERO">
+                        </div>
                     </div>
-                    <div>
-                        <input type="text" class="email" placeholder="E-mail">
-                    </div>
-                    <div>
-                        <input type="submit" class="eu_quero" value="EU QUERO">
-                    </div>
-                </div>
+                </form>
             </div>
         </section>
 
