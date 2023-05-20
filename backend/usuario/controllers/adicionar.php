@@ -13,7 +13,11 @@
     $email = $_POST['email'] ?? null;
     $perfil = "USER";
     $senha = md5($_POST['senha']);
-    $endereco_cep = $_POST['endereco_cep'];
+
+    $cep = $_POST['endereco_cep'];
+    $cep = str_replace("-", "", $cep);
+
+
     $endereco_numero = $_POST['endereco_numero'] ?? null;
     $endereco_logradouro = $_POST['endereco_logradouro'] ?? null;
     $endereco_bairro = $_POST['endereco_bairro'] ?? null;
@@ -29,7 +33,7 @@
     $Usuario->setEmail($email);
     $Usuario->setSenha($senha);
     $Usuario->setPerfil($perfil);
-    $Usuario->setEndereco_cep($endereco_cep);
+    $Usuario->setEndereco_cep($cep);
     $Usuario->setEndereco_numero($endereco_numero);
     $Usuario->setEndereco_logradouro($endereco_logradouro);
     $Usuario->setEndereco_bairro($endereco_bairro);

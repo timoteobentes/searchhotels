@@ -38,17 +38,17 @@
                                 <input type="text" id="nome" name="nome" placeholder="Nome" required autofocus>
                             </div>  
                             <div>
-                                <input type="text" name="cpf" id="cpf" placeholder="CPF" required>
+                                <input type="text" name="cpf" id="cpf" oninput="formataCPF(this.value)" maxlength="14" placeholder="CPF" required>
                             </div>
                             <div>
-                                <input type="text" name="celular" id="celular" placeholder="Celular" required>
+                                <input type="text" name="celular" id="celular" maxlength="15" oninput="formataCELULAR(this.value)" placeholder="Celular" required>
                             </div>
                         </fieldset>
                         
                         <fieldset>
                             <legend>Acesso</legend>
                             <div>
-                                <input type="email" name="email" id="email" placeholder="E-mail" required>
+                                <input type="email" name="email" oninput="formataEMAIL(this.value)" id="email" placeholder="E-mail" required>
                             </div>
                             <div>
                                 <input type="password" name="senha" id="senha" placeholder="Senha" required>
@@ -58,7 +58,7 @@
                         <fieldset>
                             <legend>Endereço</legend>
                             <div>
-                                <input type="text" name="endereco_cep" id="endereco_cep" placeholder="CEP" required>
+                                <input type="text" name="endereco_cep" oninput="formataCEP(this.value)" id="endereco_cep" placeholder="CEP" required>
                             </div>
                             <div>
                                 <input type="text" name="endereco_numero" id="endereco_numero" placeholder="Número" required>
