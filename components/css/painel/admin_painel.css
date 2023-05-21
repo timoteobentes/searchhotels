@@ -169,6 +169,14 @@ html {
 	box-shadow: 0 7px 15px rgba(0, 0, 0, .3);
 }
 
+.container .main .dashboard .container-dash .novos-usuarios tbody tr {
+	cursor: pointer;
+}
+
+.container .main .dashboard .container-dash .novos-usuarios tbody tr:hover {
+	background: #8200e61c;
+}
+
 .container .main .dashboard .container-dash .hotel-paises {
 	width: 45%;
 	height: 100%;
