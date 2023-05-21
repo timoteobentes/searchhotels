@@ -183,6 +183,14 @@ html {
 	padding: 15px;
 }
 
+.container .main .dashboard .container-dash .hotel-paises tbody tr {
+	cursor: pointer;
+}
+
+.container .main .dashboard .container-dash .hotel-paises tbody tr:hover {
+	background: #8200e61c;
+}
+
 .container .main .dashboard .container-dash .hotel-paises .hotel-famosos {
 	padding: 15px;
 	border-radius: 15px;
