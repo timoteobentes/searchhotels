@@ -15,7 +15,7 @@
 </head>
 <body>
     <div class="container">
-        <form id="form_login" name="form_login" class="form_login" method="post" action="./index.php">
+        <form id="form_login" name="form_login" class="form_login" method="post" action="./controllers/login.php">
             <div class="agrupamento_login">
                 <div class="top-al">
                     <div>
@@ -27,15 +27,11 @@
                 </div>
                 <div class="campos">
                     <div>
-                        <label for="cpf">CPF</label>
                         <div>
-                            <input type="text" id="cpf" name="cpf" required autofocus>
+                            <input type="text" id="cpf" name="cpf" placeholder="CPF" required autofocus>
                         </div>
                         <div>
-                            <label for="senha">SENHA</label>
-                        </div>
-                        <div>
-                            <input type="password" name="senha" id="senha" required>
+                            <input type="password" name="senha" id="senha" placeholder="Senha" required>
                         </div>
                         <div class="div-login">
                             <input type="submit" value="ENTRAR" name="entrar">
