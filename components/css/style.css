@@ -795,3 +795,88 @@ header .container-h {
     background: transparent;
     border: 1px solid #FFF;
 }
+
+/* Responsividade */
+
+@media screen and (max-width: 1470px) {
+    .logo-hotel-manaus {
+        width: 120px;
+        object-position: 0 -25px;
+    }
+
+    .nav ul {
+        font-size: 12px;
+    }
+
+    .container-hs {
+        width: 80%;
+    }
+
+    .container-hs input {
+        font-size: 12px;
+    }
+
+    #check-in, #check-out {
+        width: 207px;
+    }
+
+    .container-hs .destino {
+        width: 275px;
+    }
+
+    .container-hs .pesquisar {
+        padding: 10px;
+    }
+
+    .modal-rp {
+        left: 71.5rem;
+    }
+
+    .promocoes .container-p .promo-1 .img, .promocoes .container-p .promo-2 .img {
+        width: 400px;
+        height: 200px;
+    }
+
+    .container-pop {
+        height: 50rem;
+    }
+
+    .container-pop .pop-1 span {
+        font-size: 35px;
+    }
+
+    .container-pop .pop-2 span,
+    .container-pop .pop-3 span {
+        font-size: 20px;
+    }
+
+    .newsletter .container-n form, .newsletter .container-n .campos-n {
+        width: 77%;
+    }
+
+    .container-f .top-f .logo-f img {
+        width: 360px;
+    }
+
+    .container-mc .imagem-mc div img {
+        width: 165px;
+    }
+
+    .container-mc .mc {
+        font-size: 35px;
+    }
+
+    .container-ml .imagem-ml img {
+        width: 315px;
+    }
+
+    .container-ml .campos-ml input {
+        padding: 7px;
+        width: 280px;
+    }
+
+    .container-ml .campos-ml .novo {
+        font-size: 12px;
+    }
+
+}
