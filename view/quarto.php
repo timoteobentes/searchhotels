@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
     
-    <title>Search Hotels - Hotéis</title>
+    <title>Search Hotels</title>
 
     <!-- CSS -->
     <link rel="stylesheet" href="../components/css/quarto.css">
@@ -40,7 +40,7 @@
                         </li>
                         <li id="Login" onclick="openLogin()">
                             <a href="#">
-                                 <i class="bi bi-person-fill"></i>
+                                <i class="bi bi-person-fill"></i>
                                 Login
                             </a>
                         </li>
@@ -74,8 +74,8 @@
                         <i class="bi bi-star"></i>
                     </div>
                     <div class="preco">
-                        <h3> RS 1.659</h3>
-                        <span>ou 12x de RS 138</span>
+                        <h3> RS 1.659<sup>,00</sup></h3>
+                        <span>ou 12x de RS 138<sup>,00</sup></span>
                     </div>
                 </div>
                 <div class="comodidades">

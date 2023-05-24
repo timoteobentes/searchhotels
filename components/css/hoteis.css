@@ -301,8 +301,21 @@ header .container-h {
     margin-right: 2rem;
 }
 
+.list-hoteis .filtros .top-filtro a {
+    color: #888;
+    transition: .5s;
+}
+
+.list-hoteis .filtros .top-filtro a:hover {
+    color: #000;
+}
+
 .list-hoteis .filtros .body-filtro {
     margin-top: 2rem;
+}
+
+.list-hoteis .filtros .body-filtro input {
+    accent-color: #4e00cc;
 }
 
 .list-hoteis .filtros .body-filtro .preco {

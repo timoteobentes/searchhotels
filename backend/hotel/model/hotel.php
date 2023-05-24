@@ -4,11 +4,12 @@
 
         private $Id;
         private $nome;
-        private $CPF;
+        private $CNPJ;
         private $celular;
         private $email;
-        private $perfil;
-        private $senha;
+        private $descricao;
+        private $quantidade_quarto;
+		private $classificacao;
         private $endereco_cep;
         private $endereco_numero;
         private $endereco_logradouro;
@@ -59,16 +60,16 @@
 	/**
 	 * @return mixed
 	 */
-	public function getCPF() {
-		return $this->CPF;
+	public function getCNPJ() {
+		return $this->CNPJ;
 	}
 
 	/**
-	 * @param mixed $CPF 
+	 * @param mixed $CNPJ 
 	 * @return self
 	 */
-	public function setCPF($CPF): self {
-		$this->CPF = $CPF;
+	public function setCNPJ($CNPJ): self {
+		$this->CNPJ = $CNPJ;
 		return $this;
 	}
 
@@ -107,32 +108,32 @@
 	/**
 	 * @return mixed
 	 */
-	public function getPerfil() {
-		return $this->perfil;
+	public function getDescricao() {
+		return $this->descricao;
 	}
 
 	/**
-	 * @param mixed $perfil 
+	 * @param mixed $descricao 
 	 * @return self
 	 */
-	public function setPerfil($perfil): self {
-		$this->perfil = $perfil;
+	public function setDescricao($descricao): self {
+		$this->descricao = $descricao;
 		return $this;
 	}
 
 	/**
 	 * @return mixed
 	 */
-	public function getSenha() {
-		return $this->senha;
+	public function getQuantidade_quarto() {
+		return $this->quantidade_quarto;
 	}
 
 	/**
-	 * @param mixed $senha 
+	 * @param mixed $quantidade_quarto 
 	 * @return self
 	 */
-	public function setSenha($senha): self {
-		$this->senha = $senha;
+	public function setQuantidade_quarto($quantidade_quarto): self {
+		$this->quantidade_quarto = $quantidade_quarto;
 		return $this;
 	}
 
@@ -341,6 +342,22 @@
 	 */
 	public function setData_cadatro($data_cadatro): self {
 		$this->data_cadatro = $data_cadatro;
+		return $this;
+	}
+
+	/**
+	 * @return mixed
+	 */
+	public function getClassificacao() {
+		return $this->classificacao;
+	}
+
+	/**
+	 * @param mixed $classificacao 
+	 * @return self
+	 */
+	public function setClassificacao($classificacao): self {
+		$this->classificacao = $classificacao;
 		return $this;
 	}
 }

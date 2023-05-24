@@ -1,18 +1,18 @@
 <?php
 
-    require_once("../../../backend/usuario/model/usuario.php");
-    require_once("../../../backend/usuario/model/usuariodao.php");
+    require_once("../../../backend/hotel/model/hotel.php");
+    require_once("../../../backend/hotel/model/hoteldao.php");
 
     $nome = $_POST['nome'];
 
-    $cpf = $_POST['cpf'];
-    $cpf = str_replace('.', '', $cpf);
-    $cpf = str_replace('-', '', $cpf);
+    $cnpj = $_POST['cnpj'];
+    $cnpj = str_replace('.', '', $cnpj);
+    $cnpj = str_replace('-', '', $cnpj);
 
     $celular = $_POST['celular'] ?? null;
     $email = $_POST['email'] ?? null;
-    $perfil = "USER";
-    $senha = md5($_POST['senha']);
+    $descricao = "USER";
+    $quantidade_quarto = $_POST['quantidade_quarto'];
     $endereco_cep = $_POST['endereco_cep'];
     $endereco_numero = $_POST['endereco_numero'] ?? null;
     $endereco_logradouro = $_POST['endereco_logradouro'] ?? null;
@@ -21,36 +21,36 @@
     $endereco_estado = $_POST['endereco_estado'] ?? null;
     $endereco_pais = $_POST['endereco_pais'] ?? null;
 
-    $Usuario = new Usuario();
+    $Hotel = new Hotel();
 
-    $Usuario->setNome($nome);
-    $Usuario->setCPF($cpf);
-    $Usuario->setCelular($celular);
-    $Usuario->setEmail($email);
-    $Usuario->setSenha($senha);
-    $Usuario->setPerfil($perfil);
-    $Usuario->setEndereco_cep($endereco_cep);
-    $Usuario->setEndereco_numero($endereco_numero);
-    $Usuario->setEndereco_logradouro($endereco_logradouro);
-    $Usuario->setEndereco_bairro($endereco_bairro);
-    $Usuario->setEndereco_cidade($endereco_cidade);
-    $Usuario->setEndereco_estado($endereco_estado);
-    $Usuario->setEndereco_pais($endereco_pais);
+    $Hotel->setNome($nome);
+    $Hotel->setCNPJ($cnpj);
+    $Hotel->setCelular($celular);
+    $Hotel->setEmail($email);
+    $Hotel->setQuantidade_quarto($quantidade_quarto);
+    $Hotel->setDescricao($descricao);
+    $Hotel->setEndereco_cep($endereco_cep);
+    $Hotel->setEndereco_numero($endereco_numero);
+    $Hotel->setEndereco_logradouro($endereco_logradouro);
+    $Hotel->setEndereco_bairro($endereco_bairro);
+    $Hotel->setEndereco_cidade($endereco_cidade);
+    $Hotel->setEndereco_estado($endereco_estado);
+    $Hotel->setEndereco_pais($endereco_pais);
 
-    $add = UsuarioDAO::insertFirstData($Usuario);
+    $add = HotelDAO::insert($Hotel);
 
     if($add) {
-        $username = explode(" ", $nome);
-        $username = $username[0];
+        #$username = explode(" ", $nome);
+        #$username = $username[0];
 
         // $_SESSION["Nome"] = $username;
-        if(!isset($_SESSION)){
-            session_start();
-        }
-        $_SESSION["Cadastrado"] = $username;
+        #if(!isset($_SESSION)){
+        #    session_start();
+        #}
+        #$_SESSION["Cadastrado"] = $username;
         header("location: ../../../view/main.php");
     } else {
-        $_SESSION["CadastroFail"] = "Erro ao Cadastrar!";
+        #$_SESSION["CadastroFail"] = "Erro ao Cadastrar!";
         header("location: ../../../view/main.php");
     }
 
