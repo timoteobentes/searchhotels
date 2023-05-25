@@ -16,7 +16,7 @@
                 while($row = $stmt -> fetch(PDO::FETCH_OBJ)) {
                     $objeto = new Hotel();
 
-                    $objeto->setId($row->Id);
+                    $objeto->setId($row->id);
                     $objeto->setNome($row->nome);
                     $objeto->setCNPJ($row->cnpj);
                     $objeto->setCelular($row->celular);
@@ -30,11 +30,6 @@
                     $objeto->setEndereco_cidade($row->endereco_cidade);
                     $objeto->setEndereco_estado($row->endereco_estado);
                     $objeto->setEndereco_pais($row->endereco_pais);
-                    $objeto->setDados_pagamento_forma($row->dados_pagamento_forma);
-                    $objeto->setDados_pagamento_tipo_cartao($row->dados_pagamento_tipo_cartao);
-                    $objeto->setDados_pagamento_numero_cartao($row->dados_pagamento_numero_cartao);
-                    $objeto->setDados_pagamento_codigo_cartao($row->dados_pagamento_codigo_cartao);
-                    $objeto->setDados_pagamento_validade_cartao($row->dados_pagamento_validade_cartao);
                     $objeto->setData_cadatro($row->data_cadatro);
 
                     $results[] = $objeto;
@@ -134,6 +129,45 @@
                 $stmt->execute();
 
                 return true;
+            } catch(Exception $e) {
+                throw new Exception($e->getMessage());
+            }
+        }
+
+        public static function pesquisaHotel(Hotel $hotel) {
+            try {
+                $PDO = connectDB::active();
+                $sql = "SELECT * FROM hotel WHERE endereco_cidade = ':cidade' AND endereco_estado = ':estado' ";
+                $stmt = $PDO->prepare($sql);
+                $stmt->bindValue(":cidade", $hotel->getEndereco_cidade());
+                $stmt->bindValue(":estado", $hotel->getEndereco_estado());
+                $stmt->execute();
+
+                $results = array();
+                while($row = $stmt -> fetch(PDO::FETCH_OBJ)) {
+                    $objeto = new Hotel;
+
+                    $objeto->setId($row->id);
+                    $objeto->setNome($row->nome);
+                    $objeto->setCNPJ($row->cnpj);
+                    $objeto->setCelular($row->celular);
+                    $objeto->setEmail($row->email);
+                    $objeto->setDescricao($row->descricao);
+                    $objeto->setQuantidade_quarto($row->quantidade_quarto);
+                    $objeto->setClassificacao($row->classificacao);
+                    $objeto->setEndereco_cep($row->endereco_cep);
+                    $objeto->setEndereco_numero($row->endereco_numero);
+                    $objeto->setEndereco_logradouro($row->endereco_logradouro);
+                    $objeto->setEndereco_cidade($row->endereco_cidade);
+                    $objeto->setEndereco_estado($row->endereco_estado);
+                    $objeto->setEndereco_pais($row->endereco_pais);
+                    $objeto->setData_cadatro($row->data_cadatro);
+
+                    $results[] = $objeto;
+                }
+
+                return $results;
+
             } catch(Exception $e) {
                 throw new Exception($e->getMessage());
             }
