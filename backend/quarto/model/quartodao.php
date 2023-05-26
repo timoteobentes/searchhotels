@@ -1,6 +1,7 @@
 <?php
 
     require_once("../model/quarto.php");
+    require_once("../../hotel/model/hotel.php");
     require_once("../../../database/configDB.php");
 
     class QuartoDAO {
@@ -36,11 +37,12 @@
             try {
                 $PDO = connectDB::active();
                 $sql = "INSERT INTO quarto
-                        (nome, numero, descricao, valor_diaria, senha, endereco_cep, endereco_numero, endereco_logradouro, endereco_cidade, endereco_estado, endereco_pais)
+                        (idhotel, numero, descricao, valor_diaria)
                         VALUE
-                        (:nome, :numero, :descricao, :valor_diaria, :senha, :endereco_cep, :endereco_numero, :endereco_logradouro, :endereco_cidade, :endereco_estado, :endereco_pais)";
+                        (:idhotel, :numero, :descricao, :valor_diaria)";
                 $stmt = $PDO->prepare($sql);
 
+                $stmt->bindValue(":idhotel", $quarto->getIdHotel());
                 $stmt->bindValue(":numero", $quarto->getNumero());
                 $stmt->bindValue(":descricao", $quarto->getDescricao());
                 $stmt->bindValue(":valor_diaria", $quarto->getValor_diaria());
@@ -56,26 +58,14 @@
         public static function update(Quarto $quarto) {
             $PDO = connectDB::active();
             $sql = "UPDATE quarto SET
-                    nome = :nome,
+                    idhotel = :idhotel,
                     numero = :numero,
                     descricao = :descricao,
-                    valor_diaria = :valor_diaria,
-                    senha = :senha,
-                    perfil = :perfil,
-                    endereco_cep = :endereco_cep,
-                    endereco_numero = :endereco_numero,
-                    endereco_logradouro = :endereco_logradouro,
-                    endereco_cidade = :endereco_cidade,
-                    endereco_estado = :endereco_estado,
-                    endereco_pais = :endereco_pais,
-                    dados_pagamento_forma = :dados_pagamento_forma,
-                    dados_pagamento_tipo_cartao = :dados_pagamento_tipo_cartao,
-                    dados_pagamento_numero_cartao = :dados_pagamento_numero_cartao,
-                    dados_pagamento_codigo_cartao = :dados_pagamento_codigo_cartao,
-                    dados_pagamento_validade_cartao = :dados_pagamento_validade_cartao
+                    valor_diaria = :valor_diaria
                     WHERE Id = :Id";
             $stmt = $PDO->prepare($sql);
 
+            $stmt->bindValue(":idhotel", $quarto->getIdHotel());
             $stmt->bindValue(":numero", $quarto->getNumero());
             $stmt->bindValue(":descricao", $quarto->getDescricao());
             $stmt->bindValue(":valor_diaria", $quarto->getValor_diaria());
@@ -104,20 +94,30 @@
             }
         }
 
-        public static function login(Quarto $quarto) {
+        public static function pesquisaLocalizacao(Quarto $quarto) {
             try {
                 $PDO = connectDB::active();
-                $sql = "SELECT * FROM quarto
-                            WHERE valor_diaria = :valor_diaria AND senha = :senha;";
+                $sql = "SELECT h.id, h.nome, h.avaliacao, h.comodidades, h.endereco_cidade, h.endereco_estado, h.endereco_pais, q.valor_diaria FROM hotel h
+                            INNER JOIN quarto q ON q.idhotel = h.id
+                                WHERE h.endereco_cidade = ':cidade' AND h.endereco_estado = ':estado'";
                 $stmt = $PDO->prepare($sql);
-                $stmt->bindValue(":valor_diaria", $quarto->getValor_diaria());
+
+                $stmt->bindValue(":cidade", $quarto->getCidade());
+                $stmt->bindValue(":estado", $quarto->getEstado());
                 $stmt->execute();
 
                 $row = $stmt->fetch(PDO::FETCH_OBJ);
                 $quarto = new Quarto;
                 if (!empty($row)) {
                     $quarto->setId($row->Id);
-                    $quarto->setIdHotel($row->nome);
+                    $quarto->setIdHotel($row->idhotel);
+                    $quarto->setNomehotel($row->nome);
+                    $quarto->setAvaliacao($row->avaliacao);
+                    $quarto->setComodidades($row->comodidades);
+                    $quarto->setCidade($row->endereco_cidade);
+                    $quarto->setEstado($row->endereco_estado);
+                    $quarto->setPais($row->endereco_pais);
+                    $quarto->setValor_diaria($row->valor_diaria);
                 }
 
                 return empty($quarto) ? new quarto() : $quarto;

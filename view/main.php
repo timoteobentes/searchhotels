@@ -14,15 +14,6 @@
         $nomeValue = 1;
     }
 
-    // session_start();
-
-    // $_SESSION["Sucesso_Login"] = null;
-    // $logado = "Login";
-
-    // if(($_SESSION["Sucesso_Login"] == "Logado com Sucesso!!") || ($_GET["msgSucesso"])) {
-    //     $logado = $_SESSION["nome"];
-    // }
-
 ?>
 
 <!DOCTYPE html>
@@ -98,15 +89,15 @@
                 </div>
                 <div class="campos">
                     <div>
-                        <input type="text" class="destino" placeholder="Busque cidade">
+                        <input type="text" class="destino" placeholder="Destino">
                         <i class="bi bi-geo-alt"></i>
                     </div>
                     <span class="periodo">
                         <div>
-                            <input type="text" name="check-in" id="check-in" placeholder="Check-in" onfocus="(this.type='date')" onblur="(this.type='text')">
+                            <input type="text" name="check-in" id="check-in" placeholder="Check-in" onfocus="(this.type='date')" onblur="dateCheck(this)">
                         </div>
                         <div>
-                            <input type="text" name="check-out" id="check-out" placeholder="Check-out" onfocus="(this.type='date')" onblur="(this.type='text')">
+                            <input type="text" name="check-out" id="check-out" placeholder="Check-out" onfocus="(this.type='date')" onblur="dateCheck(this)">
                         </div>
                     </span>
                     <div>

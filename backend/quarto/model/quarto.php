@@ -7,7 +7,13 @@
         private $numero;
         private $descricao;
         private $valor_diaria;
+		private $comodidades;
 		private $data_cadastro;
+		private $cidade;
+		private $estado;
+		private $pais;
+		private $avaliacao;
+		private $nomehotel;
 
 
     /**
@@ -104,6 +110,102 @@
 	 */
 	public function setData_cadastro($data_cadastro): self {
 		$this->data_cadastro = $data_cadastro;
+		return $this;
+	}
+
+	/**
+	 * @return mixed
+	 */
+	public function getComodidades() {
+		return $this->comodidades;
+	}
+
+	/**
+	 * @param mixed $comodidades 
+	 * @return self
+	 */
+	public function setComodidades($comodidades): self {
+		$this->comodidades = $comodidades;
+		return $this;
+	}
+
+	/**
+	 * @return mixed
+	 */
+	public function getCidade() {
+		return $this->cidade;
+	}
+
+	/**
+	 * @param mixed $cidade 
+	 * @return self
+	 */
+	public function setCidade($cidade): self {
+		$this->cidade = $cidade;
+		return $this;
+	}
+
+	/**
+	 * @return mixed
+	 */
+	public function getEstado() {
+		return $this->estado;
+	}
+
+	/**
+	 * @param mixed $estado 
+	 * @return self
+	 */
+	public function setEstado($estado): self {
+		$this->estado = $estado;
+		return $this;
+	}
+
+	/**
+	 * @return mixed
+	 */
+	public function getAvaliacao() {
+		return $this->avaliacao;
+	}
+
+	/**
+	 * @param mixed $avaliacao 
+	 * @return self
+	 */
+	public function setAvaliacao($avaliacao): self {
+		$this->avaliacao = $avaliacao;
+		return $this;
+	}
+
+	/**
+	 * @return mixed
+	 */
+	public function getNomehotel() {
+		return $this->nomehotel;
+	}
+
+	/**
+	 * @param mixed $nomehotel 
+	 * @return self
+	 */
+	public function setNomehotel($nomehotel): self {
+		$this->nomehotel = $nomehotel;
+		return $this;
+	}
+
+	/**
+	 * @return mixed
+	 */
+	public function getPais() {
+		return $this->pais;
+	}
+
+	/**
+	 * @param mixed $pais 
+	 * @return self
+	 */
+	public function setPais($pais): self {
+		$this->pais = $pais;
 		return $this;
 	}
 }

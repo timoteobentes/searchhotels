@@ -9,9 +9,9 @@ const room_hos = document.querySelector(".room-hos");
 let toc = 0;
 function openLogin(tag) {
     if(tag.value == "Login" || tag.value == 0) {
-        modal.style.display = "block"
-        loginAdmin.style.display = "flex"
-        document.body.style.overflow = "hidden"
+        modal.style.display = "block";
+        loginAdmin.style.display = "flex";
+        document.body.style.overflow = "hidden";
     } else {
         toc += 1;
         menuUser.style.display = "block";
@@ -25,33 +25,41 @@ function openLogin(tag) {
 
 function closeLogin(event) {
     if(event.target.id == "modal-login") {
-        modal.style.display = "none"
-        loginAdmin.style.display = "none"
-        document.body.style.overflow = "auto"
+        modal.style.display = "none";
+        loginAdmin.style.display = "none";
+        document.body.style.overflow = "auto";
     } else {
-        modal.style.display = "block"
-        loginAdmin.style.display = "flex"
-        document.body.style.overflow = "hidden"
+        modal.style.display = "block";
+        loginAdmin.style.display = "flex";
+        document.body.style.overflow = "hidden";
     }
 }
 
 function openConstrucao() {
-    modalC.style.display = "block"
-    document.body.style.overflow = "hidden"
+    modalC.style.display = "block";
+    document.body.style.overflow = "hidden";
 }
 
 function closeConstrucao(event) {
     if(event.target.id == "modal-construcao") {
-        modalC.style.display = "none"
-        document.body.style.overflow = "auto"
+        modalC.style.display = "none";
+        document.body.style.overflow = "auto";
     } else {
-        modalC.style.display = "block"
-        document.body.style.overflow = "hidden"
+        modalC.style.display = "block";
+        document.body.style.overflow = "hidden";
     }
 }
 
+function dateCheck(tag) {
+    tag.type = "text";
+    let value = tag.value;
+    value = value.split("-");
+    value = `${value[2]}/${value[1]}/${value[0]}`;
+    tag.value = value;
+}
+
 function roomHos() {
-    modalRH.style.display = "block"
+    modalRH.style.display = "block";
 }
 
 
@@ -70,5 +78,5 @@ function setHospede(value) {
 
 
 let date = new Date().getFullYear();
-date = String(date).replace("0", "O")
+date = String(date).replace("0", "O");
 document.querySelector(".txt-f").innerHTML = `&copy;${date} Timóteo Bentes | Todos os Direitos Reservados`;
