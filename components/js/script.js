@@ -54,7 +54,12 @@ function dateCheck(tag) {
     tag.type = "text";
     let value = tag.value;
     value = value.split("-");
-    value = `${value[2]}/${value[1]}/${value[0]}`;
+    if(value[1] != undefined) {
+        value = `${value[2]}/${value[1]}/${value[0]}`;
+    } else {
+        let data = new Date();
+        value = `${data.getDay()}/${data.getMonth()}/${data.getFullYear()}`;
+    }
     tag.value = value;
 }
 

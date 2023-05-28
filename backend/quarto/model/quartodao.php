@@ -97,20 +97,22 @@
         public static function pesquisaLocalizacao(Quarto $quarto) {
             try {
                 $PDO = connectDB::active();
-                $sql = "SELECT h.id, h.nome, h.avaliacao, h.comodidades, h.endereco_cidade, h.endereco_estado, h.endereco_pais, q.valor_diaria FROM hotel h
+                $sql = "SELECT q.id, h.id as IdHotel, h.url, h.nome, h.avaliacao, h.comodidades, h.endereco_cidade, h.endereco_estado, h.endereco_pais, q.valor_diaria FROM hotel h
                             INNER JOIN quarto q ON q.idhotel = h.id
-                                WHERE h.endereco_cidade = ':cidade' AND h.endereco_estado = ':estado'";
+                                WHERE h.endereco_cidade = :cidade AND h.endereco_estado = :estado
+                                    GROUP BY h.id";
                 $stmt = $PDO->prepare($sql);
-
+                
                 $stmt->bindValue(":cidade", $quarto->getCidade());
                 $stmt->bindValue(":estado", $quarto->getEstado());
                 $stmt->execute();
+                
+                $results = array();
+                while($row = $stmt -> fetch(PDO::FETCH_OBJ)) {
+                    $quarto = new Quarto;
 
-                $row = $stmt->fetch(PDO::FETCH_OBJ);
-                $quarto = new Quarto;
-                if (!empty($row)) {
-                    $quarto->setId($row->Id);
-                    $quarto->setIdHotel($row->idhotel);
+                    $quarto->setId($row->id);
+                    $quarto->setIdHotel($row->IdHotel);
                     $quarto->setNomehotel($row->nome);
                     $quarto->setAvaliacao($row->avaliacao);
                     $quarto->setComodidades($row->comodidades);
@@ -118,9 +120,12 @@
                     $quarto->setEstado($row->endereco_estado);
                     $quarto->setPais($row->endereco_pais);
                     $quarto->setValor_diaria($row->valor_diaria);
+                    $quarto->setUrl($row->url);
+
+                    $results[] = $quarto;
                 }
 
-                return empty($quarto) ? new quarto() : $quarto;
+                return $results;
             } catch(Exception $e) {
                 throw new Exception($e->getMessage());
             }

@@ -6,6 +6,11 @@
 
     $nome = "Login";
     $nomeValue = 0;
+    $destino = "Destino";
+    $checkIn = "26/08/2023";
+    $checkOut = "26/08/2023";
+    $hospedes = 1;
+    $quartosPes = 1;
     if(isset($_SESSION["Cadastrado"])) {
         $nome = $_SESSION["Cadastrado"];
         $nomeValue = 1;
@@ -13,16 +18,18 @@
         $nome = $_SESSION["Logado"];
         $nomeValue = 1;
     }
-
-    // session_start();
-
-    // $_SESSION["Sucesso_Login"] = null;
-    // $logado = "Login";
-
-    // if(($_SESSION["Sucesso_Login"] == "Logado com Sucesso!!") || ($_GET["msgSucesso"])) {
-    //     $logado = $_SESSION["nome"];
-    // }
-
+    if(isset($_SESSION["quartos"])) {
+        $destino = $_SESSION["pesquisa"]["destino"];
+        $checkIn = $_SESSION["pesquisa"]["checkIn"];
+        $checkIn = str_replace("0", "O", $checkIn);
+        $checkOut = $_SESSION["pesquisa"]["checkOut"];
+        $checkOut = str_replace("0", "O", $checkOut);
+        $hospedes = $_SESSION["pesquisa"]["hospedes"];
+        $quartosPes = $_SESSION["pesquisa"]["quartos"];
+        $quartos = $_SESSION["quartos"];
+    }
+    
+    // var_dump($_SESSION["quartos"]);
 ?>
 
 <!DOCTYPE html>
@@ -97,19 +104,19 @@
             <form action="./hoteis.php" method="post" class="container-hs">
                 <div class="campos">
                     <div>
-                        <input type="text" class="destino" placeholder="Busque cidade">
+                        <input type="text" class="destino" placeholder="<?php echo $destino; ?>">
                         <i class="bi bi-geo-alt"></i>
                     </div>
                     <span class="periodo">
                         <div>
-                            <input type="text" name="check-in" id="check-in" placeholder="Check-in" onfocus="(this.type='date')" onblur="(this.type='text')">
+                            <input type="text" name="check-in" id="check-in" placeholder="<?php echo $checkIn; ?>" onfocus="(this.type='date')" onblur="(this.type='text')">
                         </div>
                         <div>
-                            <input type="text" name="check-out" id="check-out" placeholder="Check-out" onfocus="(this.type='date')" onblur="(this.type='text')">
+                            <input type="text" name="check-out" id="check-out" placeholder="<?php echo $checkOut; ?>" onfocus="(this.type='date')" onblur="(this.type='text')">
                         </div>
                     </span>
                     <div>
-                        <input type="text" class="room-hos" value="1 quarto, 3 hóspedes" onclick="roomHos()" readonly>
+                        <input type="text" class="room-hos" value="<?php echo $quartosPes; ?> quarto, <?php echo $hospedes; ?> hópedes" onclick="roomHos()" readonly>
                         <i class="bi bi-people"></i>
                         <div id="modal-rp" class="modal-rp">
                             <div>
@@ -218,126 +225,39 @@
                         </div>
                     </div>
                     <div class="lista">
-                        <div class="hotel-1">
-                            <div class="foto"></div>
-                            <div class="informacoes">
-                                <div class="info-top">
-                                    <div class="info-detalhes">
-                                        <div>
-                                            <h3>Windsor Florida Hotel</h3>
+                        <?php for($i = 0; $i < count($quartos); ++$i) { ?>
+                            <div class="hotel-1">
+                                <div class="foto" style="background-image: url(<?php echo $quartos[$i]['url']; ?>"></div>
+                                <div class="informacoes">
+                                    <div class="info-top">
+                                        <div class="info-detalhes">
+                                            <div>
+                                                <h3><?php echo $quartos[$i]["nome"]; ?></h3>
+                                            </div>
+                                            <div>
+                                                <h5><?php echo $quartos[$i]["cidade"]; ?> - <?php echo $quartos[$i]["estado"]; ?> - <?php echo $quartos[$i]["pais"]; ?></h5>
+                                            </div>
+                                            <div class="avaliacao">
+                                                <span>Muito Bom</span>
+                                                <h6><?php echo $quartos[$i]["avaliacao"]; ?> avaliações</span>
+                                            </div>
+                                            <div class="comodidades">
+                                                <span><small>Incluso:</small></span>
+                                                <p><?php echo $quartos[$i]["comodidades"]; ?></p>
+                                            </div>
                                         </div>
-                                        <div>
-                                            <h5>Rio de Janeiro - RJ - Brasil</h5>
-                                        </div>
-                                        <div class="avaliacao">
-                                            <span>Muito Bom</span>
-                                            <h6>13.775 avaliações</span>
-                                        </div>
-                                        <div>
-                                            <span>Café da Manhã incluso</span>
-                                        </div>
-                                    </div>
-                                    <div class="precos">
-                                        <div>
-                                            <h>5 diárias, 1 hóspede</h>
-                                        </div>
-                                        <div>
-                                            <span>RS</span> <h3>8.464</h3>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="hotel-1">
-                            <div class="foto"></div>
-                            <div class="informacoes">
-                                <div class="info-top">
-                                    <div class="info-detalhes">
-                                        <div>
-                                            <h3>Windsor Florida Hotel</h3>
-                                        </div>
-                                        <div>
-                                            <h5>Rio de Janeiro - RJ - Brasil</h5>
-                                        </div>
-                                        <div class="avaliacao">
-                                            <span>Muito Bom</span>
-                                            <h6>13.775 avaliações</span>
-                                        </div>
-                                        <div>
-                                            <span>Café da Manhã incluso</span>
-                                        </div>
-                                    </div>
-                                    <div class="precos">
-                                        <div>
-                                            <h>5 diárias, 1 hóspede</h>
-                                        </div>
-                                        <div>
-                                            <span>RS</span> <h3>8.464</h3>
+                                        <div class="precos">
+                                            <div>
+                                                <h2>Diária</h2>
+                                            </div>
+                                            <div>
+                                                <h2><span>R$</span> <?php echo $quartos[$i]["valor_diaria"]; ?></h2>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="hotel-1">
-                            <div class="foto"></div>
-                            <div class="informacoes">
-                                <div class="info-top">
-                                    <div class="info-detalhes">
-                                        <div>
-                                            <h3>Windsor Florida Hotel</h3>
-                                        </div>
-                                        <div>
-                                            <h5>Rio de Janeiro - RJ - Brasil</h5>
-                                        </div>
-                                        <div class="avaliacao">
-                                            <span>Muito Bom</span>
-                                            <h6>13.775 avaliações</span>
-                                        </div>
-                                        <div>
-                                            <span>Café da Manhã incluso</span>
-                                        </div>
-                                    </div>
-                                    <div class="precos">
-                                        <div>
-                                            <h>5 diárias, 1 hóspede</h>
-                                        </div>
-                                        <div>
-                                            <span>RS</span> <h3>8.464</h3>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="hotel-1">
-                            <div class="foto"></div>
-                            <div class="informacoes">
-                                <div class="info-top">
-                                    <div class="info-detalhes">
-                                        <div>
-                                            <h3>Windsor Florida Hotel</h3>
-                                        </div>
-                                        <div>
-                                            <h5>Rio de Janeiro - RJ - Brasil</h5>
-                                        </div>
-                                        <div class="avaliacao">
-                                            <span>Muito Bom</span>
-                                            <h6>13.775 avaliações</span>
-                                        </div>
-                                        <div>
-                                            <span>Café da Manhã incluso</span>
-                                        </div>
-                                    </div>
-                                    <div class="precos">
-                                        <div>
-                                            <h>5 diárias, 1 hóspede</h>
-                                        </div>
-                                        <div>
-                                            <span>RS</span> <h3>8.464</h3>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                        <?php } ?>
                     </div>
                 </div>
             </aside>

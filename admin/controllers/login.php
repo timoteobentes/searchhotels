@@ -1,7 +1,7 @@
 <?php
 
-    require_once("../../../searchhotels/admin/model/admin.php");
-    require_once("../../../searchhotels/admin/model/admindao.php");
+    require_once("../../admin/model/admin.php");
+    require_once("../../admin/model/admindao.php");
 
     $cpf = $_POST["cpf"];
     $senha = md5($_POST["senha"]);

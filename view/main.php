@@ -83,13 +83,13 @@
         </header>
 
         <section class="hotels-search">
-            <form action="../view/hoteis.php" method="post" class="container-hs">
+            <form action="../backend/quarto/controllers/pesquisadestino.php" method="post" class="container-hs">
                 <div class="titulo-form">
                     <h2>Vai para onde?</h2>
                 </div>
                 <div class="campos">
                     <div>
-                        <input type="text" class="destino" placeholder="Destino">
+                        <input type="text" name="destino" id="destino" class="destino" placeholder="Destino">
                         <i class="bi bi-geo-alt"></i>
                     </div>
                     <span class="periodo">

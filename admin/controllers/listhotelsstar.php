@@ -2,19 +2,19 @@
 
     require_once("../../admin/model/admindao.php");
 
-    class ListLastUsers {
+    class ListhotelsStars {
 
         public function __construct() {
-            $this->ListLastUsers();
+            $this->ListhotelsStars();
         }
 
-        public static function ListLastUsers() {
-            $operator = AdminDAO::getLastUsers();
+        public static function ListhotelsStars() {
+            $operator = AdminDAO::getHotelsStar();
             foreach($operator as $op) {
                 $data[] = [
                     "nome" => $op->getNome(),
-                    "cpf" => $op->getCpf(),
-                    "data_cadastro" => $op->getData_cadastro()
+                    "cnpj" => $op->getCNPJ(),
+                    "data_cadastro" => $op->getData_cadatro()
                 ];
             }
 
@@ -27,6 +27,6 @@
 
     }
 
-    new ListLastUsers();
+    new ListhotelsStars();
 
 ?>

@@ -1,7 +1,8 @@
 <?php
 
-    require_once("../../../searchhotels/database/connection/configDB.php");
-    require_once("../../../searchhotels/admin/model/admin.php");
+    require_once("../../database/configDB.php");
+    require_once("../../admin/model/admin.php");
+    require_once("../../backend/hotel/model/hotel.php");
 
     class AdminDAO {
 
@@ -45,6 +46,33 @@
                     $objeto->setNome($row->nome);
                     $objeto->setCpf($row->cpf);
                     $objeto->setData_cadastro($row->data_cadastro);
+
+                    $results[] = $objeto;
+                }
+
+                return $results;
+            } catch(Exception $e) {
+                throw new Exception($e->getMessage());
+            }
+        }
+
+        public static function getHotelsStar() {
+            try {
+                $PDO = connectDB::active();
+                $sql = "SELECT COUNT(h.id) AS num, h.nome, h.cnpj, h.data_cadastro FROM hotel h
+                            INNER JOIN quarto q ON q.idhotel = h.id
+                                GROUP BY h.id ORDER BY num DESC";
+                $stmt = $PDO->prepare($sql);
+                $stmt->execute();
+
+                $results = array();
+
+                while($row = $stmt->fetch(PDO::FETCH_OBJ)) {
+                    $objeto = new Hotel();
+
+                    $objeto->setNome($row->nome);
+                    $objeto->setCNPJ($row->cnpj);
+                    $objeto->setData_cadatro($row->data_cadastro);
 
                     $results[] = $objeto;
                 }

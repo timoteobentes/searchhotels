@@ -1,3 +1,20 @@
+<?php
+
+    if(!isset($_SESSION)){
+        session_start();
+    }
+
+    $nome = "Login";
+    $nomeValue = 0;
+    if(isset($_SESSION["Logado"])) {
+        $nome = $_SESSION["Logado"];
+        $nomeValue = 1;
+    } elseif(isset($_SESSION["quartos"])) {
+        var_dump($_SESSION["quartos"]);
+    }
+
+?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -38,11 +55,19 @@
                                 Suporte
                             </a>
                         </li>
-                        <li id="Login" onclick="openLogin()">
-                            <a href="#">
-                                <i class="bi bi-person-fill"></i>
-                                Login
-                            </a>
+                        <li id="Login" value="<?php echo $nomeValue; ?>" onclick="openLogin(this)">
+                        <i class="bi bi-person-fill"></i>
+                            <?php echo $nome; ?>
+                            <div id="modal-user" class="modal-user">
+                                <div class="container-user">
+                                    <div onclick="openConstrucao()">
+                                        <a href="#">Perfil</a>
+                                    </div>
+                                    <div>
+                                        <a href="../auth/sair/logout.php" class="sair">Sair</a>
+                                    </div>
+                                </div>
+                            </div>
                         </li>
                         <li id="Idioma">
                             <select name="idioma" id="idioma">

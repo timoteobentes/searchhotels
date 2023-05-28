@@ -85,92 +85,7 @@
                             <h2>Últimos usuários cadastrados</h2>
                         </div>
                         <div>
-                            <table id="table-usuarios" class="table-usuarios">
-                                <!-- <thead>
-                                    <tr>
-                                        <th>Nome</th>
-                                        <th>CPF</th>
-                                        <th>Data de Cadastro</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>Rosemary Bentes</td>
-                                        <td>123.456.789-90</td>
-                                        <td>01/05/2023</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Rosaimeé Bentes</td>
-                                        <td>123.456.789-90</td>
-                                        <td>01/05/2023</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Teófilo Bentes</td>
-                                        <td>123.456.789-90</td>
-                                        <td>01/05/2023</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Júnior Bentes</td>
-                                        <td>123.456.789-90</td>
-                                        <td>01/05/2023</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Aruna Bentes</td>
-                                        <td>123.456.789-90</td>
-                                        <td>01/05/2023</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Timóteo Bentes</td>
-                                        <td>123.456.789-90</td>
-                                        <td>01/05/2023</td>
-                                    </tr>
-                                    <tr>
-                                        <td>João Carlos</td>
-                                        <td>123.456.789-90</td>
-                                        <td>01/05/2023</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Marta Silva</td>
-                                        <td>123.456.789-90</td>
-                                        <td>01/05/2023</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Maria Souza</td>
-                                        <td>123.456.789-90</td>
-                                        <td>01/05/2023</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Carlos Souza</td>
-                                        <td>123.456.789-90</td>
-                                        <td>01/05/2023</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Lucas Souza</td>
-                                        <td>123.456.789-90</td>
-                                        <td>01/05/2023</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Rafael Souza</td>
-                                        <td>123.456.789-90</td>
-                                        <td>01/05/2023</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Filipe Souza</td>
-                                        <td>123.456.789-90</td>
-                                        <td>01/05/2023</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Marcos Souza</td>
-                                        <td>123.456.789-90</td>
-                                        <td>01/05/2023</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Mario Souza</td>
-                                        <td>123.456.789-90</td>
-                                        <td>01/05/2023</td>
-                                    </tr>
-                                </tbody> -->
-                            </table>
+                            <table id="table-usuarios" class="table-usuarios"></table>
                         </div>
                     </div>
                     <div class="hotel-paises">
@@ -179,8 +94,8 @@
                                 <h2>Hotéis + selecionados</h2>
                             </div>
                             <div>
-                                <table>
-                                    <thead>
+                                <table id="table-hotel" class="table-hotel">
+                                    <!-- <thead>
                                         <tr>
                                             <th>Nome</th>
                                             <th>CNPJ</th>
@@ -213,7 +128,7 @@
                                             <td>12.345.678/0001-90</td>
                                             <td>01/05/2023</td>
                                         </tr>
-                                    </tbody>
+                                    </tbody> -->
                                 </table>
                             </div>
                         </div>

@@ -14,6 +14,7 @@
 		private $pais;
 		private $avaliacao;
 		private $nomehotel;
+		private $url;
 
 
     /**
@@ -206,6 +207,22 @@
 	 */
 	public function setPais($pais): self {
 		$this->pais = $pais;
+		return $this;
+	}
+
+	/**
+	 * @return mixed
+	 */
+	public function getUrl() {
+		return $this->url;
+	}
+
+	/**
+	 * @param mixed $url 
+	 * @return self
+	 */
+	public function setUrl($url): self {
+		$this->url = $url;
 		return $this;
 	}
 }
