@@ -12,6 +12,7 @@
             $operator = AdminDAO::getAllHotel();
             foreach($operator as $op) {
                 $data[] = [
+                    "id" => $op->getId(),
                     "nome" => $op->getNome(),
                     "cnpj" => $op->getCNPJ(),
                     "celular" => $op->getCelular(),

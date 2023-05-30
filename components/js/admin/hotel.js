@@ -6,6 +6,7 @@ fetch("../../admin/controllers/listhoteis.php")
                     <th>Nome</th>
                     <th>CNPJ</th>
                     <th>País</th>
+                    <th style="text-align: center">Ações</th>
                 </thead>`;
     json.forEach((data) => {
         linha += `
@@ -13,6 +14,10 @@ fetch("../../admin/controllers/listhoteis.php")
                     <td>${data.nome}</td>
                     <td>${data.cnpj}</td>
                     <td>${data.pais}</td>
+                    <td  style="text-align: center">
+                        <i class="bi bi-pencil-fill" id="editar" onclick="action(event, ${data.id})" style="cursor: pointer;"></i>
+                        <i class="bi bi-trash3-fill" id="excluir" onclick="action(event, ${data.id})" style="cursor: pointer;"></i>
+                    </td>
                 </tr>`;
     });
 
@@ -80,4 +85,12 @@ function formataCNPJ(cnpj) {
     cnpj = cnpj.replace(/\.(\d{3})(\d)/, '.$1/$2')
     cnpj = cnpj.replace(/(\d{4})(\d)/, '$1-$2')
     return document.getElementById('cnpj').value = cnpj
+}
+
+function action(event, id) {
+    if(event.target.id == "excluir") {
+        alert("Exluir");
+    } else if(event.target.id == "editar") {
+        document.getElementById("nome").value = "Olá"
+    }
 }

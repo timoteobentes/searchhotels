@@ -177,6 +177,40 @@
             }
         }
 
+        public static function getHotelById($id) : Hotel {
+            try {
+                $param[":id"] = $id;
+                $PDO = connectDB::active();
+                $sql = "SELECT * FROM hotel WHERE id = :id;";
+                $stmt = $PDO->prepare($sql);
+                $stmt->execute($param);
+
+                $row = $stmt->fetch(PDO::FETCH_OBJ);
+                $hotel = new Hotel();
+                if(!empty($row)) {
+                    $hotel->setId($row->id);
+                    $hotel->setNome($row->nome);
+                    $hotel->setCNPJ($row->cnpj);
+                    $hotel->setCelular($row->celular);
+                    $hotel->setEmail($row->email);
+                    $hotel->setDescricao($row->descricao);
+                    $hotel->setQuantidade_quarto($row->quantidade_quarto);
+                    $hotel->setClassificacao($row->classificacao);
+                    $hotel->setEndereco_cep($row->endereco_cep);
+                    $hotel->setEndereco_numero($row->endereco_numero);
+                    $hotel->setEndereco_logradouro($row->endereco_logradouro);
+                    $hotel->setEndereco_cidade($row->endereco_cidade);
+                    $hotel->setEndereco_estado($row->endereco_estado);
+                    $hotel->setEndereco_pais($row->endereco_pais);
+                    $hotel->setData_cadatro($row->data_cadatro);
+                }
+
+                return empty($hotel) ? new Hotel : $hotel;
+            } catch(Exception $e) {
+                throw new Exception($e->getMessage());
+            }
+        }
+
     }
 
 ?>

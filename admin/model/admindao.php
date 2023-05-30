@@ -95,6 +95,7 @@
                 while($row = $stmt->fetch(PDO::FETCH_OBJ)) {
                     $objeto = new Hotel();
 
+                    $objeto->setId($row->id);
                     $objeto->setNome($row->nome);
                     $objeto->setCNPJ($row->cnpj);
                     $objeto->setCelular($row->celular);
