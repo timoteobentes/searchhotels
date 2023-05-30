@@ -34,7 +34,7 @@
                         <a href="./usuarios.php">Usuários</a>
                     </li>
                     <li class="selected">
-                        <a href="./quartos.php">Quartos</a>
+                        <a href="./reservas.php">Reservas</a>
                     </li>
                     <li>
                         <a href="./hoteis.php">Hotéis</a>
@@ -69,7 +69,7 @@
                 <div class="container-dash">
                     <div class="novos-usuarios">
                         <div class="title-user">
-                            <h2>Quartos cadastrados</h2>
+                            <h2>Reservas</h2>
                         </div>
                         <div>
                             <table>

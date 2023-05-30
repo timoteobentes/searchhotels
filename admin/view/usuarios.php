@@ -34,7 +34,7 @@
                         <a href="./usuarios.php">Usuários</a>
                     </li>
                     <li>
-                        <a href="./quartos.php">Quartos</a>
+                        <a href="./reservas.php">Reservas</a>
                     </li>
                     <li>
                         <a href="./hoteis.php">Hotéis</a>
