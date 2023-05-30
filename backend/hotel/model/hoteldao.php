@@ -45,9 +45,9 @@
             try {
                 $PDO = connectDB::active();
                 $sql = "INSERT INTO hotel
-                        (nome, cnpj, celular, email, descricao, classificacao, quantidade_quarto, endereco_cep, endereco_numero, endereco_logradouro, endereco_cidade, endereco_estado, endereco_pais)
+                        (nome, cnpj, celular, email, descricao, avaliacao, classificacao, url, comodidades, quantidade_quarto, endereco_cep, endereco_numero, endereco_logradouro, endereco_bairro, endereco_cidade, endereco_estado, endereco_pais)
                         VALUE
-                        (:nome, :cnpj, :celular, :email, :descricao, :classificacao, :quantidade_quarto, :endereco_cep, :endereco_numero, :endereco_logradouro, :endereco_cidade, :endereco_estado, :endereco_pais)";
+                        (:nome, :cnpj, :celular, :email, :descricao, :avaliacao, :classificacao, :url, :comodidades, :quantidade_quarto, :endereco_cep, :endereco_numero, :endereco_logradouro, :endereco_bairro, :endereco_cidade, :endereco_estado, :endereco_pais)";
                 $stmt = $PDO->prepare($sql);
 
                 $stmt->bindValue(":nome", $hotel->getNome());
@@ -55,11 +55,15 @@
                 $stmt->bindValue(":celular", $hotel->getCelular());
                 $stmt->bindValue(":email", $hotel->getEmail());
                 $stmt->bindValue(":descricao", $hotel->getDescricao());
+                $stmt->bindValue(":avaliacao", $hotel->getAvaliacao());
                 $stmt->bindValue(":classificacao", $hotel->getClassificacao());
+                $stmt->bindValue(":url", $hotel->getURL());
+                $stmt->bindValue(":comodidades", $hotel->getComodidades());
                 $stmt->bindValue(":quantidade_quarto", $hotel->getquantidade_quarto());
                 $stmt->bindValue(":endereco_cep", $hotel->getEndereco_cep());
                 $stmt->bindValue(":endereco_numero", $hotel->getEndereco_numero());
                 $stmt->bindValue(":endereco_logradouro", $hotel->getEndereco_logradouro());
+                $stmt->bindValue(":endereco_bairro", $hotel->getEndereco_bairro());
                 $stmt->bindValue(":endereco_cidade", $hotel->getEndereco_cidade());
                 $stmt->bindValue(":endereco_estado", $hotel->getEndereco_estado());
                 $stmt->bindValue(":endereco_pais", $hotel->getEndereco_pais());

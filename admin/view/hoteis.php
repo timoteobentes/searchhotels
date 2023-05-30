@@ -73,57 +73,22 @@
                                 <h2>Hotéis</h2>
                             </div>
                             <div>
-                                <table id="table-hotel">
-                                    <!-- <thead>
-                                        <tr>
-                                            <th>Nome</th>
-                                            <th>CNPJ</th>
-                                            <th>Data de Cadastro</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td>Pax hotel</td>
-                                            <td>12.345.678/0001-90</td>
-                                            <td>01/05/2023</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Test hotel</td>
-                                            <td>12.345.678/0001-90</td>
-                                            <td>01/05/2023</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Teste hotel</td>
-                                            <td>12.345.678/0001-90</td>
-                                            <td>01/05/2023</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Hello hotel</td>
-                                            <td>12.345.678/0001-90</td>
-                                            <td>01/05/2023</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Hi hotel</td>
-                                            <td>12.345.678/0001-90</td>
-                                            <td>01/05/2023</td>
-                                        </tr>
-                                    </tbody> -->
-                                </table>
+                                <table id="table-hotel"></table>
                             </div>
                         </div>
                     </div>
                     <aside class="form">
-                        <form id="form_cadastro_hotel" name="form_cadastro_hotel" class="form_cadastro_hotel" method="post" action="../../backend/hotel/controllers/adicionar.php">
+                        <form id="form_cadastro_hotel" name="form_cadastro_hotel" class="form_cadastro_hotel" enctype="multipart/form-data" method="post" action="../../backend/hotel/controllers/adicionar.php">
                             <div class="agrupamento_cadastro">
                                 <div class="campos">
                                     <div>
                                         <fieldset>
                                             <legend>Dados Gerais</legend>
                                             <div>
-                                                <input type="text" id="nome" name="nome" placeholder="Nome" required autofocus>
+                                                <input type="text" id="nome" name="nome" placeholder="Nome" required>
                                             </div>  
                                             <div>
-                                                <input type="text" name="cnpj" id="cnpj" oninput="formataCPF(this.value)" maxlength="18" placeholder="CNPJ" required>
+                                                <input type="text" name="cnpj" id="cnpj" oninput="formataCNPJ(this.value)" maxlength="18" placeholder="CNPJ" required>
                                             </div>
                                             <div>
                                                 <input type="text" name="celular" id="celular" maxlength="15" oninput="formataCELULAR(this.value)" placeholder="Celular" required>
@@ -133,6 +98,9 @@
                                             </div>
                                             <div>
                                                 <textarea name="descricao" id="descricao" placeholder="Descrição" required></textarea>
+                                            </div>
+                                            <div>
+                                                <textarea name="comodidades" id="comodidades" placeholder="Comodidades" required></textarea>
                                             </div>
                                             <div>
                                                 <input type="number" name="quantidade_quarto" id="quantidade_quarto" placeholder="Quartos" required>
@@ -150,7 +118,7 @@
                                         <fieldset>
                                             <legend>Endereço</legend>
                                             <div>
-                                                <input type="text" name="endereco_cep" oninput="formataCEP(this.value)" id="endereco_cep" placeholder="CEP" required>
+                                                <input type="text" name="endereco_cep" oninput="formataCEP(this.value)" id="endereco_cep" placeholder="CEP" maxlength="9" required>
                                             </div>
                                             <div>
                                                 <input type="text" name="endereco_numero" id="endereco_numero" placeholder="Número" required>
@@ -171,8 +139,6 @@
                                                 <input type="text" name="endereco_pais" id="endereco_pais" placeholder="País" required>
                                             </div>
                                         </fieldset>
-
-
                                         <div class="div-cadastrar">
                                             <input type="submit" value="CADASTRAR" name="entrar">
                                         </div>
