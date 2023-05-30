@@ -23,14 +23,18 @@
                     $objeto->setEmail($row->email);
                     $objeto->setDescricao($row->descricao);
                     $objeto->setQuantidade_quarto($row->quantidade_quarto);
-                    $objeto->setClassificacao($row->classificacao);
                     $objeto->setEndereco_cep($row->endereco_cep);
                     $objeto->setEndereco_numero($row->endereco_numero);
                     $objeto->setEndereco_logradouro($row->endereco_logradouro);
+                    $objeto->setEndereco_bairro($row->endereco_bairro);
                     $objeto->setEndereco_cidade($row->endereco_cidade);
                     $objeto->setEndereco_estado($row->endereco_estado);
                     $objeto->setEndereco_pais($row->endereco_pais);
-                    $objeto->setData_cadatro($row->data_cadatro);
+                    $objeto->setClassificacao($row->classificacao);
+                    $objeto->setAvaliacao($row->avaliacao);
+                    $objeto->setURL($row->url);
+                    $objeto->setComodidades($row->comodidades);
+                    $objeto->setData_cadatro($row->data_cadastro);
 
                     $results[] = $objeto;
                 }
@@ -79,25 +83,23 @@
         public static function update(Hotel $hotel) {
             $PDO = connectDB::active();
             $sql = "UPDATE hotel SET
-                    nome = :nome,
-                    cnpj = :cnpj,
-                    celular = :celular,
-                    email = :email,
-                    quantidade_quarto = :quantidade_quarto,
-                    descricao = :descricao,
-                    classificacao = :classificacao,
-                    endereco_cep = :endereco_cep,
-                    endereco_numero = :endereco_numero,
-                    endereco_logradouro = :endereco_logradouro,
-                    endereco_cidade = :endereco_cidade,
-                    endereco_estado = :endereco_estado,
-                    endereco_pais = :endereco_pais,
-                    dados_pagamento_forma = :dados_pagamento_forma,
-                    dados_pagamento_tipo_cartao = :dados_pagamento_tipo_cartao,
-                    dados_pagamento_numero_cartao = :dados_pagamento_numero_cartao,
-                    dados_pagamento_codigo_cartao = :dados_pagamento_codigo_cartao,
-                    dados_pagamento_validade_cartao = :dados_pagamento_validade_cartao
-                    WHERE Id = :Id";
+                        nome = :nome,
+                        cnpj = :cnpj,
+                        celular = :celular,
+                        email = :email,
+                        quantidade_quarto = :quantidade_quarto,
+                        descricao = :descricao,
+                        url = :url,
+                        avaliacao = :avaliacao,
+                        comodidades = comodidades,
+                        classificacao = :classificacao,
+                        endereco_cep = :endereco_cep,
+                        endereco_numero = :endereco_numero,
+                        endereco_logradouro = :endereco_logradouro,
+                        endereco_cidade = :endereco_cidade,
+                        endereco_estado = :endereco_estado,
+                        endereco_pais = :endereco_pais
+                    WHERE id = :Id";
             $stmt = $PDO->prepare($sql);
 
             $stmt->bindValue(":nome", $hotel->getNome());
@@ -107,6 +109,9 @@
             $stmt->bindValue(":quantidade_quarto", $hotel->getquantidade_quarto());
             $stmt->bindValue(":descricao", $hotel->getdescricao());
             $stmt->bindValue(":classificacao", $hotel->getClassificacao());
+            $stmt->bindValue(":avaliacao", $hotel->getAvaliacao());
+            $stmt->bindValue(":url", $hotel->getURL());
+            $stmt->bindValue(":comodidades", $hotel->getComodidades());
             $stmt->bindValue(":endereco_cep", $hotel->getEndereco_cep());
             $stmt->bindValue(":endereco_numero", $hotel->getEndereco_numero());
             $stmt->bindValue(":endereco_logradouro", $hotel->getEndereco_logradouro());
@@ -127,7 +132,7 @@
         public static function delete($Id) {
             try {
                 $PDO = connectDB::active();
-                $sql = "DELETE FROM hotel WHERE Id = :Id";
+                $sql = "DELETE FROM hotel WHERE id = :Id";
                 $stmt = $PDO->prepare($sql);
                 $stmt->bindValue(":Id", $Id);
                 $stmt->execute();
@@ -195,14 +200,18 @@
                     $hotel->setEmail($row->email);
                     $hotel->setDescricao($row->descricao);
                     $hotel->setQuantidade_quarto($row->quantidade_quarto);
-                    $hotel->setClassificacao($row->classificacao);
                     $hotel->setEndereco_cep($row->endereco_cep);
                     $hotel->setEndereco_numero($row->endereco_numero);
                     $hotel->setEndereco_logradouro($row->endereco_logradouro);
+                    $hotel->setEndereco_bairro($row->endereco_bairro);
                     $hotel->setEndereco_cidade($row->endereco_cidade);
                     $hotel->setEndereco_estado($row->endereco_estado);
                     $hotel->setEndereco_pais($row->endereco_pais);
-                    $hotel->setData_cadatro($row->data_cadatro);
+                    $hotel->setClassificacao($row->classificacao);
+                    $hotel->setAvaliacao($row->avaliacao);
+                    $hotel->setURL($row->url);
+                    $hotel->setComodidades($row->comodidades);
+                    $hotel->setData_cadatro($row->data_cadastro);
                 }
 
                 return empty($hotel) ? new Hotel : $hotel;

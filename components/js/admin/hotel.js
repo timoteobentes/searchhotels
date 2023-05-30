@@ -88,9 +88,22 @@ function formataCNPJ(cnpj) {
 }
 
 function action(event, id) {
+    let data = {
+        "id": id
+    };
     if(event.target.id == "excluir") {
         alert("Exluir");
     } else if(event.target.id == "editar") {
-        document.getElementById("nome").value = "Olá"
+        fetch("../../backend/hotel/controllers/gethotelbyid.php", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(data)
+        })
+        .then(res => res.json())
+        .then(json => {
+            console.log(json)
+        })
     }
 }
