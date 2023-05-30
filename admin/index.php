@@ -28,7 +28,7 @@
                 <div class="campos">
                     <div>
                         <div>
-                            <input type="text" id="cpf" name="cpf" placeholder="CPF" required autofocus>
+                            <input type="text" id="cpf" name="cpf" placeholder="CPF" oninput="formataCPF(this.value)" required autofocus>
                         </div>
                         <div>
                             <input type="password" name="senha" id="senha" placeholder="Senha" required>
@@ -41,5 +41,16 @@
             </div>
         </form>
     </div>
+
+    <script>
+        function formataCPF(cpf) {
+            if(!cpf) return ''
+            cpf_ = cpf.replace(/\D/g,'')
+            cpf_ = cpf_.replace(/(\d{3})(\d)/, '$1.$2')
+            cpf_ = cpf_.replace(/(\d{3})(\d)/, '$1.$2')
+            cpf_ = cpf_.replace(/(\d{3})(\d{1,2})$/, '$1-$2')
+            return document.getElementById('cpf').value = cpf_
+        }
+    </script>
 </body>
 </html>

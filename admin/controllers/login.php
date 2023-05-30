@@ -4,6 +4,9 @@
     require_once("../../admin/model/admindao.php");
 
     $cpf = $_POST["cpf"];
+    $cpf = str_replace('.', '', $cpf);
+    $cpf = str_replace('.', '', $cpf);
+    $cpf = str_replace('-', '', $cpf);
     $senha = md5($_POST["senha"]);
 
     $Admin = new Admin();

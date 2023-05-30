@@ -28,7 +28,7 @@
             <div class="opcoes">
                 <ul>
                     <li>
-                        <a href="../index.php">Dashboard</a>
+                        <a href="./main.php">Dashboard</a>
                     </li>
                     <li>
                         <a href="./usuarios.php">Usuários</a>
@@ -59,7 +59,7 @@
                             <a href="#">Configurações</a>
                         </li>
                         <li>
-                            <a href="#">Sair</a>
+                            <a href="../controllers/logout.php">Sair</a>
                         </li>
                     </ul>
                 </div>

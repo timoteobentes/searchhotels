@@ -7,6 +7,7 @@
 
     $cpf = $_POST['cpf'];
     $cpf = str_replace('.', '', $cpf);
+    $cpf = str_replace('.', '', $cpf);
     $cpf = str_replace('-', '', $cpf);
 
     $celular = $_POST['celular'] ?? null;

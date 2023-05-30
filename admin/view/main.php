@@ -72,7 +72,7 @@
                             <a href="#">Configurações</a>
                         </li>
                         <li>
-                            <a href="#">Sair</a>
+                            <a href="../controllers/logout.php">Sair</a>
                         </li>
                     </ul>
                 </div>
