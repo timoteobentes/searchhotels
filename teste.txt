@@ -1,0 +1,8 @@
+url = mysql://bd2d239bf3b339:24ca4824@us-cdbr-east-06.cleardb.net/heroku_4674f3c585da4ec?reconnect=true
+
+:@/?reconnect=true
+
+user = bd2d239bf3b339
+password = 24ca4824
+host = us-cdbr-east-06.cleardb.net
+database = heroku_4674f3c585da4ec
