@@ -70,11 +70,11 @@
                     <div class="hotel-paises">
                         <div class="hotel-famosos">
                             <div>
-                                <h2>Hotéis + selecionados</h2>
+                                <h2>Hotéis</h2>
                             </div>
                             <div>
-                                <table>
-                                    <thead>
+                                <table id="table-hotel">
+                                    <!-- <thead>
                                         <tr>
                                             <th>Nome</th>
                                             <th>CNPJ</th>
@@ -107,13 +107,13 @@
                                             <td>12.345.678/0001-90</td>
                                             <td>01/05/2023</td>
                                         </tr>
-                                    </tbody>
+                                    </tbody> -->
                                 </table>
                             </div>
                         </div>
                     </div>
                     <aside class="form">
-                        <form id="form_cadastro" name="form_cadastro" class="form_cadastro" method="post" action="../backend/usuario/controllers/adicionar.php">
+                        <form id="form_cadastro_hotel" name="form_cadastro_hotel" class="form_cadastro_hotel" method="post" action="../../backend/hotel/controllers/adicionar.php">
                             <div class="agrupamento_cadastro">
                                 <div class="campos">
                                     <div>
@@ -123,7 +123,7 @@
                                                 <input type="text" id="nome" name="nome" placeholder="Nome" required autofocus>
                                             </div>  
                                             <div>
-                                                <input type="text" name="cpf" id="cpf" oninput="formataCPF(this.value)" maxlength="14" placeholder="CPF" required>
+                                                <input type="text" name="cnpj" id="cnpj" oninput="formataCPF(this.value)" maxlength="18" placeholder="CNPJ" required>
                                             </div>
                                             <div>
                                                 <input type="text" name="celular" id="celular" maxlength="15" oninput="formataCELULAR(this.value)" placeholder="Celular" required>
@@ -132,7 +132,19 @@
                                                 <input type="email" name="email" oninput="formataEMAIL(this.value)" id="email" placeholder="E-mail" required>
                                             </div>
                                             <div>
-                                                <textarea type="email" name="email" id="email" placeholder="Descrição" required></textarea>
+                                                <textarea name="descricao" id="descricao" placeholder="Descrição" required></textarea>
+                                            </div>
+                                            <div>
+                                                <input type="number" name="quantidade_quarto" id="quantidade_quarto" placeholder="Quartos" required>
+                                            </div>
+                                            <div>
+                                                <input type="number" name="classificacao" id="classificacao" placeholder="Classificação" required>
+                                            </div>
+                                            <div>
+                                                <input type="number" name="avaliacao" id="avaliacao" placeholder="Avaliação" required>
+                                            </div>
+                                            <div>
+                                                <input type="file" name="foto_hotel" id="foto_hotel" required>
                                             </div>
                                         </fieldset>
                                         <fieldset>
@@ -174,6 +186,6 @@
         </aside>
     </div>
 
-    <script src="../../components/js/admin_painel.js"></script>
+    <script src="../../components/js/admin/hotel.js"></script>
 </body>
 </html>

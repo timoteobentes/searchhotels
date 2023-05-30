@@ -17,11 +17,9 @@
         private $endereco_cidade;
         private $endereco_estado;
         private $endereco_pais;
-        private $dados_pagamento_forma;
-        private $dados_pagamento_tipo_cartao;
-        private $dados_pagamento_numero_cartao;
-        private $dados_pagamento_codigo_cartao;
-        private $dados_pagamento_validade_cartao;
+        private $avaliacao;
+        private $URL;
+        private $comodidades;
         private $data_cadatro;
 
 
@@ -252,80 +250,48 @@
 	/**
 	 * @return mixed
 	 */
-	public function getDados_pagamento_forma() {
-		return $this->dados_pagamento_forma;
+	public function getAvaliacao() {
+		return $this->avaliacao;
 	}
 
 	/**
-	 * @param mixed $dados_pagamento_forma 
+	 * @param mixed $avaliacao 
 	 * @return self
 	 */
-	public function setDados_pagamento_forma($dados_pagamento_forma): self {
-		$this->dados_pagamento_forma = $dados_pagamento_forma;
+	public function setAvaliacao($avaliacao): self {
+		$this->avaliacao = $avaliacao;
 		return $this;
 	}
 
 	/**
 	 * @return mixed
 	 */
-	public function getDados_pagamento_tipo_cartao() {
-		return $this->dados_pagamento_tipo_cartao;
+	public function getURL() {
+		return $this->URL;
 	}
 
 	/**
-	 * @param mixed $dados_pagamento_tipo_cartao 
+	 * @param mixed $URL 
 	 * @return self
 	 */
-	public function setDados_pagamento_tipo_cartao($dados_pagamento_tipo_cartao): self {
-		$this->dados_pagamento_tipo_cartao = $dados_pagamento_tipo_cartao;
+	public function setURL($URL): self {
+		$this->URL = $URL;
 		return $this;
 	}
 
 	/**
 	 * @return mixed
 	 */
-	public function getDados_pagamento_numero_cartao() {
-		return $this->dados_pagamento_numero_cartao;
+	public function getComodidades() {
+		return $this->comodidades;
 	}
 
 	/**
-	 * @param mixed $dados_pagamento_numero_cartao 
+	 * @param mixed $comodidades 
 	 * @return self
 	 */
-	public function setDados_pagamento_numero_cartao($dados_pagamento_numero_cartao): self {
-		$this->dados_pagamento_numero_cartao = $dados_pagamento_numero_cartao;
-		return $this;
-	}
-
-	/**
-	 * @return mixed
-	 */
-	public function getDados_pagamento_codigo_cartao() {
-		return $this->dados_pagamento_codigo_cartao;
-	}
-
-	/**
-	 * @param mixed $dados_pagamento_codigo_cartao 
-	 * @return self
-	 */
-	public function setDados_pagamento_codigo_cartao($dados_pagamento_codigo_cartao): self {
-		$this->dados_pagamento_codigo_cartao = $dados_pagamento_codigo_cartao;
-		return $this;
-	}
-
-	/**
-	 * @return mixed
-	 */
-	public function getDados_pagamento_validade_cartao() {
-		return $this->dados_pagamento_validade_cartao;
-	}
-
-	/**
-	 * @param mixed $dados_pagamento_validade_cartao 
-	 * @return self
-	 */
-	public function setDados_pagamento_validade_cartao($dados_pagamento_validade_cartao): self {
-		$this->dados_pagamento_validade_cartao = $dados_pagamento_validade_cartao;
+	public function setComodidades($comodidades): self {
+		$this->comodidades = $comodidades;
 		return $this;
 	}
 

@@ -21,7 +21,7 @@
             if(!empty($data)) {
                 echo json_encode($data);
             } else {
-                echo json_encode(array("Erro404" => "Nenhum usuário cadastrado..."));
+                echo json_encode(array("Erro404" => "Nenhum hotel cadastrado..."));
             }
         }
 

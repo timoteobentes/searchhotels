@@ -83,6 +83,46 @@
             }
         }
 
+        public static function getAllHotel() {
+            try {
+                $PDO = connectDB::active();
+                $sql = "SELECT * FROM hotel";
+                $stmt = $PDO->prepare($sql);
+                $stmt->execute();
+
+                $results = array();
+
+                while($row = $stmt->fetch(PDO::FETCH_OBJ)) {
+                    $objeto = new Hotel();
+
+                    $objeto->setNome($row->nome);
+                    $objeto->setCNPJ($row->cnpj);
+                    $objeto->setCelular($row->celular);
+                    $objeto->setEmail($row->email);
+                    $objeto->setDescricao($row->descricao);
+                    $objeto->setQuantidade_quarto($row->quantidade_quarto);
+                    $objeto->setEndereco_cep($row->endereco_cep);
+                    $objeto->setEndereco_numero($row->endereco_numero);
+                    $objeto->setEndereco_logradouro($row->endereco_logradouro);
+                    $objeto->setEndereco_bairro($row->endereco_bairro);
+                    $objeto->setEndereco_cidade($row->endereco_cidade);
+                    $objeto->setEndereco_estado($row->endereco_estado);
+                    $objeto->setEndereco_pais($row->endereco_pais);
+                    $objeto->setClassificacao($row->classificacao);
+                    $objeto->setAvaliacao($row->avaliacao);
+                    $objeto->setURL($row->url);
+                    $objeto->setComodidades($row->comodidades);
+                    $objeto->setData_cadatro($row->data_cadastro);
+
+                    $results[] = $objeto;
+                }
+
+                return $results;
+            } catch(Exception $e) {
+                throw new Exception($e->getMessage());
+            }
+        }
+
     }
 
 ?>

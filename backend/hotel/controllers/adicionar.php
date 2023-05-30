@@ -7,12 +7,18 @@
 
     $cnpj = $_POST['cnpj'];
     $cnpj = str_replace('.', '', $cnpj);
+    $cnpj = str_replace('.', '', $cnpj);
+    $cnpj = str_replace('.', '', $cnpj);
+    $cnpj = str_replace('/', '', $cnpj);
     $cnpj = str_replace('-', '', $cnpj);
 
     $celular = $_POST['celular'] ?? null;
     $email = $_POST['email'] ?? null;
     $descricao = "USER";
     $quantidade_quarto = $_POST['quantidade_quarto'];
+    $avaliacao = $_POST['avaliacao'] ?? null;
+    $classificacao = $_POST['classificacao'] ?? null;
+    $foto_url = "../../components/imgs/hoteis/" . $_POST['foto_hotel'] ?? null;
     $endereco_cep = $_POST['endereco_cep'];
     $endereco_numero = $_POST['endereco_numero'] ?? null;
     $endereco_logradouro = $_POST['endereco_logradouro'] ?? null;
@@ -21,37 +27,39 @@
     $endereco_estado = $_POST['endereco_estado'] ?? null;
     $endereco_pais = $_POST['endereco_pais'] ?? null;
 
-    $Hotel = new Hotel();
+    var_dump($foto_url);
 
-    $Hotel->setNome($nome);
-    $Hotel->setCNPJ($cnpj);
-    $Hotel->setCelular($celular);
-    $Hotel->setEmail($email);
-    $Hotel->setQuantidade_quarto($quantidade_quarto);
-    $Hotel->setDescricao($descricao);
-    $Hotel->setEndereco_cep($endereco_cep);
-    $Hotel->setEndereco_numero($endereco_numero);
-    $Hotel->setEndereco_logradouro($endereco_logradouro);
-    $Hotel->setEndereco_bairro($endereco_bairro);
-    $Hotel->setEndereco_cidade($endereco_cidade);
-    $Hotel->setEndereco_estado($endereco_estado);
-    $Hotel->setEndereco_pais($endereco_pais);
+    // $Hotel = new Hotel();
 
-    $add = HotelDAO::insert($Hotel);
+    // $Hotel->setNome($nome);
+    // $Hotel->setCNPJ($cnpj);
+    // $Hotel->setCelular($celular);
+    // $Hotel->setEmail($email);
+    // $Hotel->setQuantidade_quarto($quantidade_quarto);
+    // $Hotel->setDescricao($descricao);
+    // $Hotel->setEndereco_cep($endereco_cep);
+    // $Hotel->setEndereco_numero($endereco_numero);
+    // $Hotel->setEndereco_logradouro($endereco_logradouro);
+    // $Hotel->setEndereco_bairro($endereco_bairro);
+    // $Hotel->setEndereco_cidade($endereco_cidade);
+    // $Hotel->setEndereco_estado($endereco_estado);
+    // $Hotel->setEndereco_pais($endereco_pais);
 
-    if($add) {
-        #$username = explode(" ", $nome);
-        #$username = $username[0];
+    // $add = HotelDAO::insert($Hotel);
 
-        // $_SESSION["Nome"] = $username;
-        #if(!isset($_SESSION)){
-        #    session_start();
-        #}
-        #$_SESSION["Cadastrado"] = $username;
-        header("location: ../../../view/main.php");
-    } else {
-        #$_SESSION["CadastroFail"] = "Erro ao Cadastrar!";
-        header("location: ../../../view/main.php");
-    }
+    // if($add) {
+    //     #$username = explode(" ", $nome);
+    //     #$username = $username[0];
+
+    //     // $_SESSION["Nome"] = $username;
+    //     #if(!isset($_SESSION)){
+    //     #    session_start();
+    //     #}
+    //     #$_SESSION["Cadastrado"] = $username;
+    //     header("location: ../../../admin/view/hoteis.php.php");
+    // } else {
+    //     #$_SESSION["CadastroFail"] = "Erro ao Cadastrar!";
+    //     header("location: ../../../admin/view/hoteis.php.php");
+    // }
 
 ?>
