@@ -101,18 +101,18 @@
         </header>
 
         <section class="hotels-search">
-            <form action="./hoteis.php" method="post" class="container-hs">
+            <form action="../backend/quarto/controllers/pesquisadestino.php" method="post" class="container-hs">
                 <div class="campos">
                     <div>
-                        <input type="text" class="destino" placeholder="<?php echo $destino; ?>">
+                        <input type="text" class="destino" name="destino" value="<?php echo $destino; ?>">
                         <i class="bi bi-geo-alt"></i>
                     </div>
                     <span class="periodo">
                         <div>
-                            <input type="text" name="check-in" id="check-in" placeholder="<?php echo $checkIn; ?>" onfocus="(this.type='date')" onblur="(this.type='text')">
+                            <input type="text" name="check-in" id="check-in" value="<?php echo $checkIn; ?>" onfocus="(this.type='date')" onblur="(this.type='text')">
                         </div>
                         <div>
-                            <input type="text" name="check-out" id="check-out" placeholder="<?php echo $checkOut; ?>" onfocus="(this.type='date')" onblur="(this.type='text')">
+                            <input type="text" name="check-out" id="check-out" value="<?php echo $checkOut; ?>" onfocus="(this.type='date')" onblur="(this.type='text')">
                         </div>
                     </span>
                     <div>
@@ -137,7 +137,7 @@
         </section>
 
         <section class="list-hoteis">
-            <aside class="filtros">
+            <!-- <aside class="filtros">
                 <div class="top-filtro">
                     <div>
                         <h2>Filtro</h2>
@@ -201,7 +201,7 @@
                         </div>
                     </section>
                 </div>
-            </aside>
+            </aside> -->
             <aside class="hoteis">
                 <div class="container-hoteis">
                     <div class="top">

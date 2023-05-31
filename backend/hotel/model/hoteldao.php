@@ -102,6 +102,8 @@
                     WHERE id = :Id";
             $stmt = $PDO->prepare($sql);
 
+            var_dump($hotel);
+
             $stmt->bindValue(":nome", $hotel->getNome());
             $stmt->bindValue(":cnpj", $hotel->getcnpj());
             $stmt->bindValue(":celular", $hotel->getCelular());

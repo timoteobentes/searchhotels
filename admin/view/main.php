@@ -7,6 +7,8 @@
     $nome = "Login";
     if(isset($_SESSION["Logado"])) {
         $nome = $_SESSION["Logado"];
+    } else {
+        header("Location: ../index.php");
     }
 
 ?>
@@ -66,10 +68,10 @@
                 <div class="nav">
                     <ul>
                         <li>
-                            <a href="#">Notificações</a>
+                            <a href="./suporte.php">Configurações</a>
                         </li>
                         <li>
-                            <a href="#">Configurações</a>
+                            <a href="./suporte.php">Configurações</a>
                         </li>
                         <li>
                             <a href="../controllers/logout.php">Sair</a>

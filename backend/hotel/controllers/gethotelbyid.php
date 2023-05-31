@@ -34,6 +34,7 @@
                 "avaliacao" => $hotel->getAvaliacao(),
                 "url" => $hotel->getURL(),
                 "comodidades" => $hotel->getComodidades(),
+                "classificacao" => $hotel->getClassificacao(),
                 "data_cadastro" => $hotel->getData_cadatro()
             );
 

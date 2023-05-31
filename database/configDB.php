@@ -7,10 +7,10 @@
 
         static $active;
         public static function active() {
-            static $host = "localhost";
-            static $user = "root";
-            static $senha = "Timoteo@24";
-            static $db_name = "searchhotels";
+            static $host = "us-cdbr-east-06.cleardb.net";
+            static $user = "bd2d239bf3b339";
+            static $senha = "24ca4824";
+            static $db_name = "heroku_4674f3c585da4ec";
 
             $active = new PDO("mysql:host=$host; port=3306; dbname=$db_name; charset=utf8", $user, $senha);
             return $active;

@@ -1,3 +1,18 @@
+<?php
+
+    if(!isset($_SESSION)){
+        session_start();
+    }
+
+    $nome = "Login";
+    if(isset($_SESSION["Logado"])) {
+        $nome = $_SESSION["Logado"];
+    } else {
+        header("Location: ../index.php");
+    }
+
+?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -53,10 +68,10 @@
                 <div class="nav">
                     <ul>
                         <li>
-                            <a href="#">Notificações</a>
+                            <a href="./suporte.php">Configurações</a>
                         </li>
                         <li>
-                            <a href="#">Configurações</a>
+                            <a href="./suporte.php">Configurações</a>
                         </li>
                         <li>
                             <a href="../controllers/logout.php">Sair</a>
@@ -85,8 +100,11 @@
                                         <fieldset>
                                             <legend>Dados Gerais</legend>
                                             <div>
+                                                <input type="hidden" id="id" name="id">
+                                            </div>
+                                            <div>
                                                 <input type="text" id="nome" name="nome" placeholder="Nome" required>
-                                            </div>  
+                                            </div>
                                             <div>
                                                 <input type="text" name="cnpj" id="cnpj" oninput="formataCNPJ(this.value)" maxlength="18" placeholder="CNPJ" required>
                                             </div>
@@ -140,7 +158,7 @@
                                             </div>
                                         </fieldset>
                                         <div class="div-cadastrar">
-                                            <input type="submit" value="CADASTRAR" name="entrar">
+                                            <input type="submit" value="CADASTRAR" id="btnAction" name="entrar">
                                         </div>
                                     </div>
                                 </div>
@@ -149,6 +167,19 @@
                     </aside>
                 </div>
             </main>
+
+            <div class="modal-excluir" id="modal-excluir">
+                <form action="../../backend/hotel/controllers/deletar.php" method="post">
+                    <div>
+                        <input type="hidden" name="id" id="idExcluir">
+                    </div>
+                    <p>Deseja remover este hotel?</p>
+                    <div class="div-remover">
+                        <button type="submit" value="Remover" id="remover" name="remover">Remover</button>
+                        <button type="button" value="Cancelar" id="cancelar" onclick="notRemove()" name="cancelar">Cancelar</button>
+                    </div>
+                </form>
+            </div>
         </aside>
     </div>
 

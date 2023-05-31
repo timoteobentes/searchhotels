@@ -92,7 +92,8 @@ function action(event, id) {
         "id": id
     };
     if(event.target.id == "excluir") {
-        alert("Exluir");
+        document.getElementById("modal-excluir").style.display = "block";
+        document.getElementById("idExcluir").value = id;
     } else if(event.target.id == "editar") {
         fetch("../../backend/hotel/controllers/gethotelbyid.php", {
             method: "POST",
@@ -103,7 +104,30 @@ function action(event, id) {
         })
         .then(res => res.json())
         .then(json => {
-            console.log(json)
+            document.getElementById("id").value = Number(json.id);
+            document.getElementById("nome").value = json.nome;
+            document.getElementById("cnpj").value = json.cnpj;
+            document.getElementById("celular").value = json.celular;
+            document.getElementById("email").value = json.email;
+            document.getElementById("descricao").value = json.descricao;
+            document.getElementById("comodidades").value = json.comodidades;
+            document.getElementById("quantidade_quarto").value = Number(json.quantidade_quarto);
+            document.getElementById("classificacao").value = Number(json.classificacao);
+            document.getElementById("avaliacao").value = json.avaliacao;
+            document.getElementById("endereco_cep").value = json.cep;
+            document.getElementById("endereco_numero").value = json.numero;
+            document.getElementById("endereco_logradouro").value = json.logradouro;
+            document.getElementById("endereco_bairro").value = json.bairro;
+            document.getElementById("endereco_cidade").value = json.cidade;
+            document.getElementById("endereco_estado").value = json.estado;
+            document.getElementById("endereco_pais").value = json.pais;
+
+            document.getElementById("btnAction").value = "EDITAR";
+            document.getElementById("form_cadastro_hotel").action = "../../backend/hotel/controllers/editar.php";
         })
     }
+}
+
+function notRemove() {
+    document.getElementById("modal-excluir").style.display = "none";
 }
