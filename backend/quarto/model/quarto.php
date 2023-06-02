@@ -8,6 +8,7 @@
         private $descricao;
         private $valor_diaria;
 		private $comodidades;
+		private $classificacao;
 		private $data_cadastro;
 		private $cidade;
 		private $estado;
@@ -223,6 +224,22 @@
 	 */
 	public function setUrl($url): self {
 		$this->url = $url;
+		return $this;
+	}
+
+	/**
+	 * @return mixed
+	 */
+	public function getClassificacao() {
+		return $this->classificacao;
+	}
+
+	/**
+	 * @param mixed $classificacao 
+	 * @return self
+	 */
+	public function setClassificacao($classificacao): self {
+		$this->classificacao = $classificacao;
 		return $this;
 	}
 }

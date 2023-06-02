@@ -36,6 +36,7 @@
                         "estado" => $op->getEstado(),
                         "pais" => $op->getPais(),
                         "comodidades" => $op->getComodidades(),
+                        "classificacao" => $op->getClassificacao(),
                         "url" => $op->getUrl()
                     ];
                 }

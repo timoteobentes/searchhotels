@@ -12,6 +12,11 @@
             static $senha = "24ca4824";
             static $db_name = "heroku_4674f3c585da4ec";
 
+            // static $host = "localhost";
+            // static $user = "root";
+            // static $senha = "Timoteo@24";
+            // static $db_name = "searchhotels";
+
             $active = new PDO("mysql:host=$host; port=3306; dbname=$db_name; charset=utf8", $user, $senha);
             return $active;
         }

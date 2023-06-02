@@ -5,13 +5,24 @@
     }
 
     $nome = "Login";
+    $iduser = 0;
     $nomeValue = 0;
     if(isset($_SESSION["Logado"])) {
-        $nome = $_SESSION["Logado"];
+        $nome = $_SESSION["Logado"]["nome"];
+        $iduser = $_SESSION["Logado"]["iduser"];
         $nomeValue = 1;
     } elseif(isset($_SESSION["quartos"])) {
         var_dump($_SESSION["quartos"]);
     }
+
+    if(!isset($_SESSION)){
+        session_start();
+    }
+
+    $hotel = $_SESSION["hotel"];
+    $prec = $_SESSION["preco"];
+    $comodidades = $_SESSION["comodidades"];
+    $classificacao = $_SESSION["classificacao"];
 
 ?>
 
@@ -89,35 +100,34 @@
             <div class="bottom-q">
                 <div class="hotel">
                     <div>
-                        <h2>Windsor Florida Hotel</h2>
+                        <h2><?php echo $hotel; ?></h2>
                     </div>
-                    <div class="stars">
-                        <i class="bi bi-star-fill"></i>
-                        <i class="bi bi-star-fill"></i>
-                        <i class="bi bi-star-fill"></i>
-                        <i class="bi bi-star-half"></i>
-                        <i class="bi bi-star"></i>
+                    <?php if($classificacao == 5) { ?>
+                        <div class="stars">
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i>
+                            <!-- <i class="bi bi-star-half"></i>
+                            <i class="bi bi-star"></i> -->
+                        </div>
+                    <?php } ?>
+                    <div class="preco-comodidades">
+                        <div class="preco">
+                            <h3> R$ <?php echo $prec; ?><sup>,00</sup></h3>
+                            <span>Valor diária</span>
+                        </div>
+                        <div class="comodidades">
+                            <div>
+                                <h3>Comodidades:</h3>
+                                <div class="comodidades-list">
+                                    <?php echo $comodidades; ?>                        
+                                </div>
+                            </div>
+                            <a href="#" onclick="setReserva(<?php echo $iduser; ?>)">Reservar</a>
+                        </div>
                     </div>
-                    <div class="preco">
-                        <h3> RS 1.659<sup>,00</sup></h3>
-                        <span>ou 12x de RS 138<sup>,00</sup></span>
-                    </div>
-                </div>
-                <div class="comodidades">
-                    <h3>Comodidades:</h3>
-                    <div class="comodidades-list">
-                        <ul>
-                            <li>Café da manhã</li>
-                            <li>Wifi</li>
-                            <li>Academia</li>
-                            <li>Massagem</li>
-                        </ul>
-                        <ul>
-                            <li>Piscina</li>
-                            <li>Restaurante</li>
-                        </ul>
-                    </div>
-                    <a href="#">Reservar</a>
                 </div>
             </div>
         </div>

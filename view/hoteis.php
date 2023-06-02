@@ -15,7 +15,7 @@
         $nome = $_SESSION["Cadastrado"];
         $nomeValue = 1;
     } elseif(isset($_SESSION["Logado"])) {
-        $nome = $_SESSION["Logado"];
+        $nome = $_SESSION["Logado"]["nome"];
         $nomeValue = 1;
     }
     if(isset($_SESSION["quartos"])) {
@@ -137,71 +137,6 @@
         </section>
 
         <section class="list-hoteis">
-            <!-- <aside class="filtros">
-                <div class="top-filtro">
-                    <div>
-                        <h2>Filtro</h2>
-                    </div>
-                    <div>
-                        <a href="#">Limpar</a>
-                    </div>
-                </div>
-                <div class="body-filtro">
-                    <section class="servicos">
-                        <div>
-                            <h3>Serviços</h3>
-                        </div>
-                        <div>
-                            <ul>
-                                <li>
-                                    <input type="checkbox" name="todas-opcoes" id="todas-opcoes">
-                                    <label for="todas-opcoes">Todas as opções</label>
-                                </li>
-                                <li>
-                                    <input type="checkbox" name="internet" id="internet">
-                                    <label for="internet">Internet</label>
-                                </li>
-                                <li>
-                                    <input type="checkbox" name="restaurante" id="restaurante">
-                                    <label for="restaurante">Restaurante</label>
-                                </li>
-                                <li>
-                                    <input type="checkbox" name="lavanderia" id="lavanderia">
-                                    <label for="lavanderia">Lavanderia</label>
-                                </li>
-                                <li>
-                                    <input type="checkbox" name="cafe" id="cafe">
-                                    <label for="cafe">Café da Manhã</label>
-                                </li>
-                                <li>
-                                    <input type="checkbox" name="academia" id="academia">
-                                    <label for="academia">Academia</label>
-                                </li>
-                                <li>
-                                    <input type="checkbox" name="piscina" id="piscina">
-                                    <label for="piscina">Piscina</label>
-                                </li>
-                                <li>
-                                    <input type="checkbox" name="estacionamento" id="estacionamento">
-                                    <label for="estacionamento">Estacionamento</label>
-                                </li>
-                            </ul>
-                        </div>
-                    </section>
-                    <section class="preco">
-                        <div>
-                            <h3>Preço</h3>
-                        </div>
-                        <div>
-                            <div>
-                                <span>RS 5OO</span>
-                                <span>RS 25OO</span>
-                            </div>
-                            <input type="range" min="0" max="11" value="7" step="1">
-                        </div>
-                    </section>
-                </div>
-            </aside> -->
             <aside class="hoteis">
                 <div class="container-hoteis">
                     <div class="top">
@@ -227,35 +162,47 @@
                     <div class="lista">
                         <?php for($i = 0; $i < count($quartos); ++$i) { ?>
                             <div class="hotel-1">
-                                <div class="foto" style="background-image: url(<?php echo $quartos[$i]['url']; ?>"></div>
-                                <div class="informacoes">
-                                    <div class="info-top">
-                                        <div class="info-detalhes">
-                                            <div>
-                                                <h3><?php echo $quartos[$i]["nome"]; ?></h3>
+                                <?php 
+                                    if(!isset($_SESSION)){
+                                        session_start();
+                                    }
+
+                                    $_SESSION["hotel"] = $quartos[$i]["nome"];
+                                    $_SESSION["preco"] = $quartos[$i]["valor_diaria"];
+                                    $_SESSION["comodidades"] = $quartos[$i]["comodidades"];
+                                    $_SESSION["classificacao"] = $quartos[$i]["classificacao"];
+                                ?>
+                                <a href="./quarto.php">
+                                    <div class="foto" style="background-image: url(<?php echo $quartos[$i]['url']; ?>"></div>
+                                    <div class="informacoes">
+                                        <div class="info-top">
+                                            <div class="info-detalhes">
+                                                <div>
+                                                    <h3><?php echo $quartos[$i]["nome"]; ?></h3>
+                                                </div>
+                                                <div>
+                                                    <h5><?php echo $quartos[$i]["cidade"]; ?> - <?php echo $quartos[$i]["estado"]; ?> - <?php echo $quartos[$i]["pais"]; ?></h5>
+                                                </div>
+                                                <div class="avaliacao">
+                                                    <span>Muito Bom</span>
+                                                    <h6><?php echo $quartos[$i]["avaliacao"]; ?> avaliações</span>
+                                                </div>
+                                                <div class="comodidades">
+                                                    <span><small>Incluso:</small></span>
+                                                    <p><?php echo $quartos[$i]["comodidades"]; ?></p>
+                                                </div>
                                             </div>
-                                            <div>
-                                                <h5><?php echo $quartos[$i]["cidade"]; ?> - <?php echo $quartos[$i]["estado"]; ?> - <?php echo $quartos[$i]["pais"]; ?></h5>
-                                            </div>
-                                            <div class="avaliacao">
-                                                <span>Muito Bom</span>
-                                                <h6><?php echo $quartos[$i]["avaliacao"]; ?> avaliações</span>
-                                            </div>
-                                            <div class="comodidades">
-                                                <span><small>Incluso:</small></span>
-                                                <p><?php echo $quartos[$i]["comodidades"]; ?></p>
-                                            </div>
-                                        </div>
-                                        <div class="precos">
-                                            <div>
-                                                <h2>Diária</h2>
-                                            </div>
-                                            <div>
-                                                <h2><span>R$</span> <?php echo $quartos[$i]["valor_diaria"]; ?></h2>
+                                            <div class="precos">
+                                                <div>
+                                                    <h2>Diária</h2>
+                                                </div>
+                                                <div>
+                                                    <h2><span>R$</span> <?php echo $quartos[$i]["valor_diaria"]; ?></h2>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
+                                </a>
                             </div>
                         <?php } ?>
                     </div>
@@ -268,17 +215,19 @@
                 <div class="title-n">
                     <h2>INSCREVA-SE PARA RECEBER OFERTAS EXCLUSIVAS!</h2>
                 </div>
-                <div class="campos-n">
-                    <div>
-                        <input type="text" class="nome" placeholder="Nome">
+                <form action="../backend/newsletter/controllers/adicionar.php" method="post">
+                    <div class="campos-n">
+                        <div>
+                            <input type="text" class="nome" placeholder="Nome">
+                        </div>
+                        <div>
+                            <input type="text" class="email" placeholder="E-mail">
+                        </div>
+                        <div>
+                            <input type="submit" class="eu_quero" value="EU QUERO">
+                        </div>
                     </div>
-                    <div>
-                        <input type="text" class="email" placeholder="E-mail">
-                    </div>
-                    <div>
-                        <input type="submit" class="eu_quero" value="EU QUERO">
-                    </div>
-                </div>
+                </form>
             </div>
         </section>
 
@@ -325,15 +274,17 @@
                 <div>
                     <h2>LOGIN</h2>
                 </div>
-                <div>
-                    <input type="text" class="email" placeholder="E-mail" required>
-                </div>
-                <div>
-                    <input type="password" class="senha" placeholder="Senha" required>
-                </div>
-                <div>
-                    <input type="submit" value="Entrar" class="entrar">
-                </div>
+                <form action="../auth/login/valida_login.php" method="post">
+                    <div>
+                        <input type="text" class="email" placeholder="E-mail" required>
+                    </div>
+                    <div>
+                        <input type="password" class="senha" placeholder="Senha" required>
+                    </div>
+                    <div>
+                        <input type="submit" value="Entrar" class="entrar">
+                    </div>
+                </form>
                 <div class="novo">
                     <div>
                         <h3>Não tem conta?</h3>

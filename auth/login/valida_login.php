@@ -21,7 +21,12 @@
     $nome = explode(" ", $nome);
 
 
-    $_SESSION["Logado"] = $nome[0];
+    $_SESSION["Logado"] = array(
+        "nome" => $nome[0],
+        "iduser" => $login->getId()
+    );
+
+    // var_dump($_SESSION["Logado"]["nome"]);
     header("location: ../../view/main.php");
 
 

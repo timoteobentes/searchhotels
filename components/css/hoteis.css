@@ -395,6 +395,13 @@ header .container-h {
     transition: .5s ease;
 }
 
+.lista .hotel-1 a {
+    display: flex;
+    width: 100%;
+    text-decoration: none;
+    color: #000;
+}
+
 .lista .hotel-1:hover {
     box-shadow: 0 7px 15px rgba(0, 0, 0, .2);
 }

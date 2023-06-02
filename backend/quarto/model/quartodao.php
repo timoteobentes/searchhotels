@@ -97,7 +97,7 @@
         public static function pesquisaLocalizacao(Quarto $quarto) {
             try {
                 $PDO = connectDB::active();
-                $sql = "SELECT q.id, h.id as IdHotel, h.url, h.nome, h.avaliacao, h.comodidades, h.endereco_cidade, h.endereco_estado, h.endereco_pais, q.valor_diaria FROM hotel h
+                $sql = "SELECT q.id, h.id as IdHotel, h.url, h.nome, h.avaliacao, h.comodidades, h.classificacao, h.endereco_cidade, h.endereco_estado, h.endereco_pais, q.valor_diaria FROM hotel h
                             INNER JOIN quarto q ON q.idhotel = h.id
                                 WHERE h.endereco_cidade = :cidade AND h.endereco_estado = :estado
                                     GROUP BY h.id";
@@ -116,6 +116,7 @@
                     $quarto->setNomehotel($row->nome);
                     $quarto->setAvaliacao($row->avaliacao);
                     $quarto->setComodidades($row->comodidades);
+                    $quarto->setClassificacao($row->classificacao);
                     $quarto->setCidade($row->endereco_cidade);
                     $quarto->setEstado($row->endereco_estado);
                     $quarto->setPais($row->endereco_pais);

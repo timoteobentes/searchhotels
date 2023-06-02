@@ -10,7 +10,7 @@
         $nome = $_SESSION["Cadastrado"];
         $nomeValue = 1;
     } elseif(isset($_SESSION["Logado"])) {
-        $nome = $_SESSION["Logado"];
+        $nome = $_SESSION["Logado"]["nome"];
         $nomeValue = 1;
     }
 
