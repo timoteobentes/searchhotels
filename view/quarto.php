@@ -92,129 +92,151 @@
             </div>
         </header>
 
-    <section class="quarto">
-        <div class="container-q">
-            <div class="top-q">
-                <div class="imagem"></div>
-            </div>
-            <div class="bottom-q">
-                <div class="hotel">
-                    <div>
-                        <h2><?php echo $hotel; ?></h2>
-                    </div>
-                    <?php if($classificacao == 5) { ?>
-                        <div class="stars">
-                            <i class="bi bi-star-fill"></i>
-                            <i class="bi bi-star-fill"></i>
-                            <i class="bi bi-star-fill"></i>
-                            <i class="bi bi-star-fill"></i>
-                            <i class="bi bi-star-fill"></i>
-                            <!-- <i class="bi bi-star-half"></i>
-                            <i class="bi bi-star"></i> -->
+        <section class="quarto">
+            <div class="container-q">
+                <div class="top-q">
+                    <div class="imagem"></div>
+                </div>
+                <div class="bottom-q">
+                    <div class="hotel">
+                        <div>
+                            <h2><?php echo $hotel; ?></h2>
                         </div>
-                    <?php } ?>
-                    <div class="preco-comodidades">
-                        <div class="preco">
-                            <h3> R$ <?php echo $prec; ?><sup>,00</sup></h3>
-                            <span>Valor diária</span>
-                        </div>
-                        <div class="comodidades">
-                            <div>
-                                <h3>Comodidades:</h3>
-                                <div class="comodidades-list">
-                                    <?php echo $comodidades; ?>                        
-                                </div>
+                        <?php if($classificacao == 5) { ?>
+                            <div class="stars">
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <!-- <i class="bi bi-star-half"></i>
+                                <i class="bi bi-star"></i> -->
                             </div>
-                            <a href="#" onclick="setReserva(<?php echo $iduser; ?>)">Reservar</a>
+                        <?php } elseif($classificacao == 4) { ?>
+                            <div class="stars">
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                            </div>
+                        <?php } elseif($classificacao == 3) { ?>
+                            <div class="stars">
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                            </div>
+                        <?php } elseif($classificacao == 2) { ?>
+                            <div class="stars">
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                            </div>
+                        <?php } elseif($classificacao == 1) { ?>
+                            <div class="stars">
+                                <i class="bi bi-star-fill"></i>
+                            </div>
+                        <?php } ?>
+                        <div class="preco-comodidades">
+                            <div class="preco">
+                                <h3> R$ <?php echo $prec; ?><sup>,00</sup></h3>
+                                <span>Valor diária</span>
+                            </div>
+                            <div class="comodidades">
+                                <div>
+                                    <h3>Comodidades:</h3>
+                                    <div class="comodidades-list">
+                                        <?php echo $comodidades; ?>                        
+                                    </div>
+                                </div>
+                                <a href="#" onclick="setReserva(<?php echo $iduser; ?>)">Reservar</a>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <section class="newsletter">
-        <div class="container-n">
-            <div class="title-n">
-                <h2>INSCREVA-SE PARA RECEBER OFERTAS EXCLUSIVAS!</h2>
+        <section class="newsletter">
+            <div class="container-n">
+                <div class="title-n">
+                    <h2>INSCREVA-SE PARA RECEBER OFERTAS EXCLUSIVAS!</h2>
+                </div>
+                <div class="campos-n">
+                    <div>
+                        <input type="text" class="nome" placeholder="Nome">
+                    </div>
+                    <div>
+                        <input type="text" class="email" placeholder="E-mail">
+                    </div>
+                    <div>
+                        <input type="submit" class="eu_quero" value="EU QUERO">
+                    </div>
+                </div>
             </div>
-            <div class="campos-n">
-                <div>
-                    <input type="text" class="nome" placeholder="Nome">
-                </div>
-                <div>
-                    <input type="text" class="email" placeholder="E-mail">
-                </div>
-                <div>
-                    <input type="submit" class="eu_quero" value="EU QUERO">
-                </div>
-            </div>
-        </div>
-    </section>
+        </section>
 
-    <footer>
-        <div class="container-f">
-            <div class="top-f">
-                <div class="logo-f">
-                    <img src="../components/imgs/searchhotels.svg" alt="Logo">
+        <footer>
+            <div class="container-f">
+                <div class="top-f">
+                    <div class="logo-f">
+                        <img src="../components/imgs/searchhotels.svg" alt="Logo">
+                    </div>
+                </div>
+                <div class="main-f">
+                    <div>
+                        <a href="https://www.instagram.com/bentest.t/" target="_blank">
+                            <i class="bi bi-instagram"></i>
+                        </a>
+                        <a href="https://www.facebook.com/bentestimoteo/" target="_blank">
+                            <i class="bi bi-facebook"></i>
+                        </a>
+                        <a href="https://api.whatsapp.com/send?phone=5592994546580&text=Ol%C3%A1%20Tim%C3%B3teo!" target="_blank">
+                            <i class="bi bi-whatsapp"></i>
+                        </a>
+                        <a href="https://github.com/timoteobentes">
+                            <i class="bi bi-github"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="bottom-f">
+                    <div>
+                        <span>&copy;2O23 Timóteo Bentes | Todos os Direitos Reservados</span>
+                    </div>
                 </div>
             </div>
-            <div class="main-f">
-                <div>
-                    <a href="https://www.instagram.com/bentest.t/" target="_blank">
-                        <i class="bi bi-instagram"></i>
-                    </a>
-                    <a href="https://www.facebook.com/bentestimoteo/" target="_blank">
-                        <i class="bi bi-facebook"></i>
-                    </a>
-                    <a href="https://api.whatsapp.com/send?phone=5592994546580&text=Ol%C3%A1%20Tim%C3%B3teo!" target="_blank">
-                        <i class="bi bi-whatsapp"></i>
-                    </a>
-                    <a href="https://github.com/timoteobentes">
-                        <i class="bi bi-github"></i>
-                    </a>
-                </div>
-            </div>
-            <div class="bottom-f">
-                <div>
-                    <span>&copy;2O23 Timóteo Bentes | Todos os Direitos Reservados</span>
-                </div>
-            </div>
-        </div>
-    </footer>
-</div>
+        </footer>
+    </div>
 
-<div class="modal-login" id="modal-login" onclick="closeLogin(event)">
-    <div class="container-ml">
-        <div class="imagem-ml">
-            <div>
-                <img src="../components/imgs/searchhotels.svg" alt="Search Hotels">
-            </div>
-        </div>
-        <div class="campos-ml">
-            <div>
-                <h2>LOGIN</h2>
-            </div>
-            <div>
-                <input type="text" class="email" placeholder="E-mail" required>
-            </div>
-            <div>
-                <input type="password" class="senha" placeholder="Senha" required>
-            </div>
-            <div>
-                <input type="submit" value="Entrar" class="entrar">
-            </div>
-            <div class="novo">
+    <div class="modal-login" id="modal-login" onclick="closeLogin(event)">
+        <div class="container-ml">
+            <div class="imagem-ml">
                 <div>
-                    <h3>Não tem conta?</h3>
+                    <img src="../components/imgs/searchhotels.svg" alt="Search Hotels">
+                </div>
+            </div>
+            <div class="campos-ml">
+                <div>
+                    <h2>LOGIN</h2>
                 </div>
                 <div>
-                    <a href="./cadastro.php">Cadastre-se</a>
+                    <input type="text" class="email" placeholder="E-mail" required>
+                </div>
+                <div>
+                    <input type="password" class="senha" placeholder="Senha" required>
+                </div>
+                <div>
+                    <input type="submit" value="Entrar" class="entrar">
+                </div>
+                <div class="novo">
+                    <div>
+                        <h3>Não tem conta?</h3>
+                    </div>
+                    <div>
+                        <a href="./cadastro.php">Cadastre-se</a>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
-<script src="../components/js/hoteis.js"></script>
+    <script src="../components/js/hoteis.js"></script>
 </body>
 </html>

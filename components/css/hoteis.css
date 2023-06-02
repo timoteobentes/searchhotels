@@ -504,11 +504,12 @@ header .container-h {
     letter-spacing: 2px;
 }
 
+.newsletter .container-n form,
 .newsletter .container-n .campos-n {
     display: flex;
     align-items: center;
     justify-content: space-evenly;
-    width: 40%;
+    width: 65%;
     margin-top: 12px;
 }
 

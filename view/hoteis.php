@@ -11,12 +11,14 @@
     $checkOut = "26/08/2023";
     $hospedes = 1;
     $quartosPes = 1;
+    $reserva = true;
     if(isset($_SESSION["Cadastrado"])) {
         $nome = $_SESSION["Cadastrado"];
         $nomeValue = 1;
     } elseif(isset($_SESSION["Logado"])) {
         $nome = $_SESSION["Logado"]["nome"];
         $nomeValue = 1;
+        $reserva = false;
     }
     if(isset($_SESSION["quartos"])) {
         $destino = $_SESSION["pesquisa"]["destino"];
@@ -29,7 +31,10 @@
         $quartos = $_SESSION["quartos"];
     }
     
-    // var_dump($_SESSION["quartos"]);
+    $_SESSION["hotel"] = null;
+    $_SESSION["preco"] = null;
+    $_SESSION["comodidades"] = null;
+    $_SESSION["classificacao"] = null;
 ?>
 
 <!DOCTYPE html>
@@ -162,17 +167,12 @@
                     <div class="lista">
                         <?php for($i = 0; $i < count($quartos); ++$i) { ?>
                             <div class="hotel-1">
-                                <?php 
-                                    if(!isset($_SESSION)){
-                                        session_start();
-                                    }
-
-                                    $_SESSION["hotel"] = $quartos[$i]["nome"];
-                                    $_SESSION["preco"] = $quartos[$i]["valor_diaria"];
-                                    $_SESSION["comodidades"] = $quartos[$i]["comodidades"];
-                                    $_SESSION["classificacao"] = $quartos[$i]["classificacao"];
-                                ?>
-                                <a href="./quarto.php">
+                                <a onclick="teste(`<?php echo $quartos[$i]['nome']; ?>`)">
+                                    <script>
+                                        function teste(tag) {
+                                            console.log(tag)
+                                        }
+                                    </script>
                                     <div class="foto" style="background-image: url(<?php echo $quartos[$i]['url']; ?>"></div>
                                     <div class="informacoes">
                                         <div class="info-top">
@@ -184,7 +184,37 @@
                                                     <h5><?php echo $quartos[$i]["cidade"]; ?> - <?php echo $quartos[$i]["estado"]; ?> - <?php echo $quartos[$i]["pais"]; ?></h5>
                                                 </div>
                                                 <div class="avaliacao">
-                                                    <span>Muito Bom</span>
+                                                    <?php if($quartos[$i]["classificacao"] == 5) { ?>
+                                                        <div class="stars">
+                                                            <i class="bi bi-star-fill"></i>
+                                                            <i class="bi bi-star-fill"></i>
+                                                            <i class="bi bi-star-fill"></i>
+                                                            <i class="bi bi-star-fill"></i>
+                                                            <i class="bi bi-star-fill"></i>
+                                                        </div>
+                                                    <?php } elseif($quartos[$i]["classificacao"] == 4) { ?>
+                                                        <div class="stars">
+                                                            <i class="bi bi-star-fill"></i>
+                                                            <i class="bi bi-star-fill"></i>
+                                                            <i class="bi bi-star-fill"></i>
+                                                            <i class="bi bi-star-fill"></i>
+                                                        </div>
+                                                    <?php } elseif($quartos[$i]["classificacao"] == 3) { ?>
+                                                        <div class="stars">
+                                                            <i class="bi bi-star-fill"></i>
+                                                            <i class="bi bi-star-fill"></i>
+                                                            <i class="bi bi-star-fill"></i>
+                                                        </div>
+                                                    <?php } elseif($quartos[$i]["classificacao"] == 2) { ?>
+                                                        <div class="stars">
+                                                            <i class="bi bi-star-fill"></i>
+                                                            <i class="bi bi-star-fill"></i>
+                                                        </div>
+                                                    <?php } elseif($quartos[$i]["classificacao"] == 1) { ?>
+                                                        <div class="stars">
+                                                            <i class="bi bi-star-fill"></i>
+                                                        </div>
+                                                    <?php } ?>
                                                     <h6><?php echo $quartos[$i]["avaliacao"]; ?> avaliações</span>
                                                 </div>
                                                 <div class="comodidades">
@@ -193,6 +223,9 @@
                                                 </div>
                                             </div>
                                             <div class="precos">
+                                                <div>
+                                                    <span>RESERVAR</span>
+                                                </div>
                                                 <div>
                                                     <h2>Diária</h2>
                                                 </div>

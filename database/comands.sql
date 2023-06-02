@@ -23,6 +23,31 @@
 CREATE DATABASE IF NOT EXISTS `searchhotels`
 USE `searchhotels`;
 
+CREATE TABLE IF NOT EXISTS `usuario` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `nome` varchar(150) NOT NULL,
+  `cpf` varchar(11) NOT NULL,
+  `celular` varchar(15) DEFAULT NULL,
+  `email` varchar(150) DEFAULT NULL,
+  `perfil` enum('USER','ADMIN') NOT NULL,
+  `senha` varchar(45) NOT NULL,
+  `url` varchar(150) DEFAULT NULL,
+  `endereco_cep` varchar(8) NOT NULL,
+  `endereco_numero` varchar(7) DEFAULT NULL,
+  `endereco_bairro` varchar(150) DEFAULT NULL,
+  `endereco_logradouro` varchar(150) DEFAULT NULL,
+  `endereco_cidade` varchar(150) DEFAULT NULL,
+  `endereco_estado` varchar(150) DEFAULT NULL,
+  `endereco_pais` varchar(150) DEFAULT NULL,
+  `dados_pagamento_forma` enum('BOLETO','CARTAO','PIX') DEFAULT NULL,
+  `dados_pagamento_tipo_cartao` enum('CREDITO','DEBITO') DEFAULT NULL,
+  `dados_pagamento_numero_cartao` varchar(45) DEFAULT NULL,
+  `dados_pagamento_codigo_cartao` int DEFAULT NULL,
+  `dados_pagamento_validade_codigo` varchar(5) DEFAULT NULL,
+  `data_cadastro` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`)
+);
+
 
 CREATE TABLE IF NOT EXISTS `hotel` (
   `id` int NOT NULL AUTO_INCREMENT,
@@ -79,29 +104,4 @@ CREATE TABLE IF NOT EXISTS `reserva` (
   KEY `fk_reserva_quarto1_idx` (`idquarto`),
   CONSTRAINT `fk_reserva_quarto1` FOREIGN KEY (`idquarto`) REFERENCES `quarto` (`id`),
   CONSTRAINT `fk_reserva_usuario1` FOREIGN KEY (`idusuario`) REFERENCES `usuario` (`id`)
-);
-
-CREATE TABLE IF NOT EXISTS `usuario` (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `nome` varchar(150) NOT NULL,
-  `cpf` varchar(11) NOT NULL,
-  `celular` varchar(15) DEFAULT NULL,
-  `email` varchar(150) DEFAULT NULL,
-  `perfil` enum('USER','ADMIN') NOT NULL,
-  `senha` varchar(45) NOT NULL,
-  `url` varchar(150) DEFAULT NULL,
-  `endereco_cep` varchar(8) NOT NULL,
-  `endereco_numero` varchar(7) DEFAULT NULL,
-  `endereco_bairro` varchar(150) DEFAULT NULL,
-  `endereco_logradouro` varchar(150) DEFAULT NULL,
-  `endereco_cidade` varchar(150) DEFAULT NULL,
-  `endereco_estado` varchar(150) DEFAULT NULL,
-  `endereco_pais` varchar(150) DEFAULT NULL,
-  `dados_pagamento_forma` enum('BOLETO','CARTAO','PIX') DEFAULT NULL,
-  `dados_pagamento_tipo_cartao` enum('CREDITO','DEBITO') DEFAULT NULL,
-  `dados_pagamento_numero_cartao` varchar(45) DEFAULT NULL,
-  `dados_pagamento_codigo_cartao` int DEFAULT NULL,
-  `dados_pagamento_validade_codigo` varchar(5) DEFAULT NULL,
-  `data_cadastro` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  PRIMARY KEY (`id`)
 );
