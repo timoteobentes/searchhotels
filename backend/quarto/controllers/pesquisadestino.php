@@ -11,9 +11,13 @@
 
         public static function listQuartosLocalizacao() {
             $destino = $_POST['destino'] ?? null;
-            $destin = explode(" - ", $destino);
-            $cidade = $destin[0];
-            $estado = $destin[1];
+            $cidade = $destino;
+            $estado = $destino;
+            if(str_contains($destino, "-")) {
+                $destin = explode(" - ", $destino);
+                $cidade = $destin[0];
+                $estado = $destin[1];
+            }
             $checkIn = $_POST['check-in'] ?? null;
             $checkOut = $_POST['check-out'] ?? null;
             $hospedes = $_POST['hospedes'] ?? null;
@@ -29,6 +33,7 @@
             if($operator) {
                 foreach($operator as $op) {
                     $data[] = [
+                        "idquarto" => $op->getId(),
                         "nome" => $op->getNomehotel(),
                         "avaliacao" => $op->getAvaliacao(),
                         "valor_diaria" => $op->getValor_diaria(),

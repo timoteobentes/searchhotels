@@ -4,6 +4,7 @@
 
         private $Id;
         private $IdHotel;
+		private $iduser;
         private $numero;
         private $descricao;
         private $valor_diaria;
@@ -16,6 +17,7 @@
 		private $avaliacao;
 		private $nomehotel;
 		private $url;
+		private $status;
 
 
     /**
@@ -240,6 +242,38 @@
 	 */
 	public function setClassificacao($classificacao): self {
 		$this->classificacao = $classificacao;
+		return $this;
+	}
+
+	/**
+	 * @return mixed
+	 */
+	public function getIduser() {
+		return $this->iduser;
+	}
+
+	/**
+	 * @param mixed $iduser 
+	 * @return self
+	 */
+	public function setIduser($iduser): self {
+		$this->iduser = $iduser;
+		return $this;
+	}
+
+	/**
+	 * @return mixed
+	 */
+	public function getStatus() {
+		return $this->status;
+	}
+
+	/**
+	 * @param mixed $status 
+	 * @return self
+	 */
+	public function setStatus($status): self {
+		$this->status = $status;
 		return $this;
 	}
 }

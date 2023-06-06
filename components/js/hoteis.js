@@ -64,3 +64,24 @@ function setHospede(value) {
     hospedes = value;
     room_hos.value = `${quartos} quarto(s), ${hospedes} hóspede(s)`;
 }
+
+
+function reserva(iduser, idquarto) {
+    let quart = {
+        quarto: idquarto,
+        user: iduser
+    };
+
+    fetch("../backend/quarto/controllers/reserva.php", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(quart)
+    })
+    .then(res => res.json())
+    .then(json => {
+        console.log(json)
+    })
+    .catch(err => console.log(err))
+}

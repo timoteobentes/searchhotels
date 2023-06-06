@@ -99,7 +99,7 @@
                 $PDO = connectDB::active();
                 $sql = "SELECT q.id, h.id as IdHotel, h.url, h.nome, h.avaliacao, h.comodidades, h.classificacao, h.endereco_cidade, h.endereco_estado, h.endereco_pais, q.valor_diaria FROM hotel h
                             INNER JOIN quarto q ON q.idhotel = h.id
-                                WHERE h.endereco_cidade = :cidade AND h.endereco_estado = :estado
+                                WHERE h.endereco_cidade = :cidade OR h.endereco_estado = :estado
                                     GROUP BY h.id";
                 $stmt = $PDO->prepare($sql);
                 
@@ -127,6 +127,27 @@
                 }
 
                 return $results;
+            } catch(Exception $e) {
+                throw new Exception($e->getMessage());
+            }
+        }
+
+        public static function reserva(Quarto $quarto) {
+            try {
+                $PDO = connectDB::active();
+                $sql = "INSERT INTO reserva
+                        (idquarto, idusuario, status)
+                        VALUE
+                        (:idquarto, :idusuario, :status)";
+                $stmt = $PDO->prepare($sql);
+
+                $stmt->bindValue(":idquarto", $quarto->getIdHotel());
+                $stmt->bindValue(":idusuario", $quarto->getIduser());
+                $stmt->bindValue(":status", $quarto->getStatus());
+
+                $stmt->execute();
+
+                return true;
             } catch(Exception $e) {
                 throw new Exception($e->getMessage());
             }

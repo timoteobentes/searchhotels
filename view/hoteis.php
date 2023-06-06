@@ -5,6 +5,7 @@
     }
 
     $nome = "Login";
+    $userid = 0;
     $nomeValue = 0;
     $destino = "Destino";
     $checkIn = "26/08/2023";
@@ -17,6 +18,7 @@
         $nomeValue = 1;
     } elseif(isset($_SESSION["Logado"])) {
         $nome = $_SESSION["Logado"]["nome"];
+        $userid = $_SESSION["Logado"]["iduser"];
         $nomeValue = 1;
         $reserva = false;
     }
@@ -167,10 +169,14 @@
                     <div class="lista">
                         <?php for($i = 0; $i < count($quartos); ++$i) { ?>
                             <div class="hotel-1">
-                                <a onclick="teste(`<?php echo $quartos[$i]['nome']; ?>`)">
+                                <a onclick="teste(<?php echo $userid; ?>, <?php echo $quartos[$i]['idquarto']; ?>)">
                                     <script>
-                                        function teste(tag) {
-                                            console.log(tag)
+                                        function teste(iduser, idquarto) {
+                                            if(iduser == 0) {
+                                                openLogin(document.getElementById("Login"));
+                                            } else {
+                                                reserva(iduser, idquarto)
+                                            }
                                         }
                                     </script>
                                     <div class="foto" style="background-image: url(<?php echo $quartos[$i]['url']; ?>"></div>
