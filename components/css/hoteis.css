@@ -706,7 +706,8 @@ header .container-h {
     color: #444;
 }
 
-.modal-construcao {
+.modal-construcao,
+.modal-sucesso {
     position: absolute;
     top: 0;
     width: 100%;
@@ -717,7 +718,8 @@ header .container-h {
     display: none;
 }
 
-.container-mc {
+.container-mc,
+.container-ms {
     position: relative;
     top: 50%;
     left: 50%;
@@ -759,7 +761,8 @@ header .container-h {
     letter-spacing: 2px;
 }
 
-.container-mc .mc {
+.container-mc .mc,
+.container-ms .ms {
     display: flex;
     flex-direction: column;
     align-items: center;

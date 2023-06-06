@@ -179,7 +179,7 @@
                                             }
                                         }
                                     </script>
-                                    <div class="foto" style="background-image: url(<?php echo $quartos[$i]['url']; ?>"></div>
+                                    <div class="foto" style="background-image: url(<?php echo $quartos[$i]['url']; ?>)"></div>
                                     <div class="informacoes">
                                         <div class="info-top">
                                             <div class="info-detalhes">
@@ -345,6 +345,14 @@
             </div>
             <div class="mc">
                 Página em construção
+            </div>
+        </div>
+    </div>
+
+    <div class="modal-sucesso" id="modal-sucesso">
+        <div class="container-ms">
+            <div class="ms">
+                Quarto Reservado com Sucesso!
             </div>
         </div>
     </div>

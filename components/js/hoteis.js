@@ -1,6 +1,7 @@
 const modalC = document.getElementById("modal-construcao");
 const modal = document.getElementById("modal-login");
 const modalRH = document.getElementById("modal-rp");
+const modalSucesso = document.getElementById("modal-sucesso");
 
 const menuUser = document.getElementById("modal-user");
 const room_hos = document.querySelector(".room-hos");
@@ -35,6 +36,15 @@ function closeLogin(event) {
 function openConstrucao() {
     modalC.style.display = "block"
     document.body.style.overflow = "hidden"
+}
+
+function openSucesso() {
+    modalSucesso.style.display = "block"
+    document.body.style.overflow = "hidden"
+    setTimeout(() => {
+        modalSucesso.style.display = "none"
+        document.body.style.overflow = "auto"
+    }, 2000)
 }
 
 function closeConstrucao(event) {
@@ -79,9 +89,9 @@ function reserva(iduser, idquarto) {
         },
         body: JSON.stringify(quart)
     })
-    .then(res => res.json())
+    .then(res => res.text())
     .then(json => {
-        console.log(json)
+        openSucesso()
     })
     .catch(err => console.log(err))
 }

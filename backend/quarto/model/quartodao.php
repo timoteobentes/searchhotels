@@ -141,7 +141,7 @@
                         (:idquarto, :idusuario, :status)";
                 $stmt = $PDO->prepare($sql);
 
-                $stmt->bindValue(":idquarto", $quarto->getIdHotel());
+                $stmt->bindValue(":idquarto", $quarto->getId());
                 $stmt->bindValue(":idusuario", $quarto->getIduser());
                 $stmt->bindValue(":status", $quarto->getStatus());
 
