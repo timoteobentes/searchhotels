@@ -20,10 +20,15 @@
         session_start();
     }
 
+    var_dump($login);
+
     $nome = $login->getNome();
     $nome = explode(" ", $nome);
 
-    $_SESSION["Logado"] = $nome[0];
+    $_SESSION["Logado"] = array(
+        "nome" => $nome[0],
+        "foto" => $login->getUrl()
+    );
     header("location: ../view/main.php");
 
 ?>

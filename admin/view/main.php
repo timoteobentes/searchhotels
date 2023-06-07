@@ -4,9 +4,11 @@
         session_start();
     }
 
-    $nome = "Login";
+    $nome = "User";
+    $urlfoto = "";
     if(isset($_SESSION["Logado"])) {
-        $nome = $_SESSION["Logado"];
+        $nome = $_SESSION["Logado"]["nome"];
+        $urlfoto = $_SESSION["Logado"]["foto"];
     } else {
         header("Location: ../index.php");
     }
@@ -33,10 +35,10 @@
         <aside class="sidebar">
             <div class="top-s">
                 <div>
-                    <img src="../../components/imgs/perfil.png" alt="Usuário">
+                    <img src="<?php echo $urlfoto ?? "../../components/imgs/user.png" ?>" alt="Usuário">
                 </div>
                 <div class="info">
-                    <span>Timóteo Bentes</span>
+                    <span><?php echo $nome ?? "User"; ?></span>
                     <span>Admin</span>
                 </div>
             </div>

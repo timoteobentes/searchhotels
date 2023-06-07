@@ -12,7 +12,7 @@
             try {
                 $PDO = connectDB::active();
                 $sql = "SELECT * FROM usuario
-                            WHERE cpf = :cpf AND senha = :senha; AND perfil = 'ADMIN'";
+                            WHERE cpf = :cpf AND senha = :senha AND perfil = 'ADMIN'";
                 $stmt = $PDO->prepare($sql);
                 $stmt->bindValue(":cpf", $admin->getCpf());
                 $stmt->bindValue(":senha", $admin->getSenha());
@@ -24,6 +24,7 @@
                     $Admin->setCpf($row->cpf);
                     $Admin->setNome($row->nome);
                     $Admin->setEmail($row->email);
+                    $Admin->setUrl($row->url);
                 }
 
                 return empty($Admin) ? new Admin : $Admin;

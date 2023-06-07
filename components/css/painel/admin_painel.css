@@ -196,6 +196,11 @@ html {
 	width: 100%;
 }
 
+.container .main .dashboard .container-dash #table-pais,
+.container .main .dashboard .container-dash #table-hotel {
+	color: #fff;
+}
+
 .container .main .dashboard .container-dash h2 {
 	font-size: 35px;
 	margin-bottom: 3rem;

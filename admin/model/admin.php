@@ -6,6 +6,7 @@
         private $senha;
         private $email;
         private $nome;
+		private $url;
         private $data_cadastro;
     
 	/**
@@ -85,6 +86,22 @@
 	 */
 	public function setData_cadastro($data_cadastro): self {
 		$this->data_cadastro = $data_cadastro;
+		return $this;
+	}
+
+	/**
+	 * @return mixed
+	 */
+	public function getUrl() {
+		return $this->url;
+	}
+
+	/**
+	 * @param mixed $url 
+	 * @return self
+	 */
+	public function setUrl($url): self {
+		$this->url = $url;
 		return $this;
 	}
 }
