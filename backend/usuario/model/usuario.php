@@ -5,6 +5,7 @@
         private $Id;
         private $nome;
         private $CPF;
+		private $url;
         private $celular;
         private $email;
         private $perfil;
@@ -343,6 +344,42 @@
 		$this->data_cadatro = $data_cadatro;
 		return $this;
 	}
+
+	/**
+	 * @return mixed
+	 */
+	public function getUrl() {
+		return $this->url;
+	}
+
+	/**
+	 * @param mixed $url 
+	 * @return self
+	 */
+	public function setUrl($url): self {
+		$this->url = $url;
+		return $this;
+	}
+
+	function getCPFmask() {
+        $val = $this->CPF;
+        $mask = '###.###.###-##';
+        $maskared = '';
+        $k = 0;
+        for ($i = 0; $i <= strlen($mask) - 1; ++$i) {
+            if ($mask[$i] == '#') {
+                if (isset($val[$k])) {
+                    $maskared .= $val[$k++];
+                }
+            } else {
+                if (isset($mask[$i])) {
+                    $maskared .= $mask[$i];
+                }
+            }
+        }
+
+        return $maskared; 
+    }
 }
 
 ?>

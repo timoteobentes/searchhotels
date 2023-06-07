@@ -41,3 +41,24 @@ fetch("../../admin/controllers/listhotelsstar.php")
     document.querySelector("#table-hotel").innerHTML = linha;
 })
 .catch(err => console.log(err))
+
+
+fetch("../../admin/controllers/listpaisesstar.php")
+.then(res => res.json())
+.then(json => {
+    let linha = `
+                <thead>
+                    <th>País</th>
+                    <th>-</th>
+                </thead>`;
+    json.forEach((data) => {
+        linha += `
+                <tr class="lista">
+                    <td>${data.pais}</td>
+                    <td>${data.porc}</td>
+                </tr>`;
+    });
+
+    document.querySelector("#table-pais").innerHTML = linha;
+})
+.catch(err => console.log(err))
