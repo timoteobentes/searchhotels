@@ -4,6 +4,7 @@
     require_once("../../admin/model/admin.php");
     require_once("../../backend/hotel/model/hotel.php");
     require_once("../../backend/usuario/model/usuario.php");
+    require_once("../../backend/reserva/model/reserva.php");
 
     class AdminDAO {
 
@@ -180,6 +181,37 @@
                     $results[] = $objeto;
                 }
 
+                return $results;
+            } catch(Exception $e) {
+                throw new Exception($e->getMessage());
+            }
+        }
+
+        public static function getReservas() {
+            try {
+                $PDO = connectDB::active();
+                $sql = "SELECT r.*, q.numero, u.nome as NomeUser, h.nome as NomeHotel FROM reserva r
+                            INNER JOIN quarto q ON q.id - r.idquarto
+                                INNER JOIN hotel h ON q.idhotel = h.id
+                                    INNER JOIN usuario u ON r.idusuario = u.id";
+                $stmt = $PDO->prepare($sql);
+                $stmt->execute();
+
+                $results = array();
+                while($row = $stmt->fetch(PDO::FETCH_OBJ)) {
+                    $objeto = new Reserva();
+
+                    $objeto->setId($row->id);
+                    $objeto->setNomeuser($row->NomeUser);
+                    $objeto->setNomehotel($row->NomeHotel);
+                    $objeto->setIdquarto($row->idquarto);
+                    $objeto->setIduser($row->idusuario);
+                    $objeto->setNumero($row->numero);
+                    $objeto->setStatus($row->status);
+                    $objeto->setData_reserva($row->data_reserva);
+
+                    $results[] = $objeto;
+                }
                 return $results;
             } catch(Exception $e) {
                 throw new Exception($e->getMessage());
